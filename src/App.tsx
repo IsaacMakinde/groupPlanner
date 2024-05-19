@@ -1,16 +1,21 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Hello World</h1>
-          <p className="subtitle">
-            My first website with <strong>Bulma</strong>!
-          </p>
+      <Router>
+        <div className="App">
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
         </div>
-      </section>
+      </Router>
     </>
   );
 }
