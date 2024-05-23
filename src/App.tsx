@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Events";
+import Header from "./components/ui/Header";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Router>
         <div className="App">
           <main>
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
