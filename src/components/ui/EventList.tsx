@@ -1,6 +1,9 @@
 import Event from "../../interfaces/EventInter";
+interface EventListProps {
+  events: Event[];
+}
 import EventCard from "./EventCard";
-const EventList = ({ events }) => {
+const EventList: React.FC<EventListProps> = ({ events }) => {
   return (
     <section className="section">
       <p>Events</p>

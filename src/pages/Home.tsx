@@ -6,16 +6,10 @@ import Event from "../interfaces/EventInter";
 
 const Home: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
-  const handleEventCreateButton = () => {
-    console.log("Create Event!");
-    // trigger a form to be displayed
-    setShowForm((showForm) => !showForm);
-  };
-
-  const eventsList: Event[] = [
+  const [eventsList, setEventsList] = useState<Event[]>([
     {
       id: 1,
-      name: "Event 1",
+      title: "Event 1",
       date: "01/01/2024",
       venue: "Citywest",
       description: "null",
@@ -25,7 +19,7 @@ const Home: React.FC = () => {
     },
     {
       id: 2,
-      name: "Event 2",
+      title: "Event 2",
       date: "01/01/2024",
       venue: "Citywest",
       description: "null",
@@ -35,7 +29,7 @@ const Home: React.FC = () => {
     },
     {
       id: 3,
-      name: "Event 3",
+      title: "Event 3",
       date: "01/01/2024",
       venue: "Citywest",
       description: "null",
@@ -43,7 +37,18 @@ const Home: React.FC = () => {
       pricing: 12.5,
       guests: "Isaac",
     },
-  ];
+  ]);
+  const handleEventCreateButton = () => {
+    console.log("Create Event!");
+    // trigger a form to be displayed
+    setShowForm(true);
+  };
+  const handleAddEvent = (event: Event) => {
+    setEventsList([...eventsList, event]);
+    console.log("Event added", event);
+    console.log(eventsList);
+    setShowForm(false);
+  };
 
   return (
     <div>
@@ -59,6 +64,7 @@ const Home: React.FC = () => {
         <EventForm
           showForm={showForm}
           onClose={handleEventCreateButton}
+          onAddEvent={handleAddEvent}
         ></EventForm>
       </section>
       <EventList events={eventsList} />

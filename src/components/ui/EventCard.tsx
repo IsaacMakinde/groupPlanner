@@ -26,7 +26,7 @@ const EventCard: FC<EventCardProps> = ({ eventObject }) => {
             </figure>
           </div>
           <div className="media-content">
-            <p className="title is-4">{eventObject.name}</p>
+            <p className="title is-4">{eventObject.title}</p>
           </div>
         </div>
 

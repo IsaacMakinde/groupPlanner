@@ -1,6 +1,6 @@
 interface Event {
   id: number;
-  name: string;
+  title: string;
   date: string;
   venue: string;
   description?: string;
