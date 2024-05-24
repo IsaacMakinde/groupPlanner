@@ -1,45 +1,34 @@
-import Button from "../ui/Button";
-import { useState } from "react";
 import Event from "../../interfaces/EventInter";
 
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
-  const [formTitle, setTitle] = useState("");
-  const [formDate, setDate] = useState(defaultDate);
-  const [formVenue, setVenue] = useState("");
-  const [formDescription, setDescription] = useState("");
-  const [formCategory, setCategory] = useState("Travel");
-  const [formPricing, setPricing] = useState(0);
-  const [formGuests, setGuests] = useState("");
-
-  const newEvent: Event = {
-    id: 4,
-    title: formTitle,
-    date: formDate,
-    venue: formVenue,
-    description: formDescription,
-    category: formDescription,
-    pricing: formPricing,
-    guests: formGuests,
-  };
 
   const handleSubmit = (e) => {
     console.log("Form submitted");
     console.log("trigger", e.target);
     e.preventDefault();
-    console.log({
-      formTitle,
-      formDate,
-      formVenue,
-      formDescription,
-      formCategory,
-      formPricing,
-      formGuests,
-    });
+
+    const formData = new FormData(e.target);
+    const payload = Object.fromEntries(formData);
+    const newEvent: Event = {
+      id: Math.random(),
+      title: payload.title.toString(),
+      date: payload.date.toString(),
+      venue: payload.venue.toString(),
+      description: payload.description.toString(),
+      category: payload.category.toString(),
+      pricing: parseFloat(payload.pricing.toString()),
+      guests: payload.guestList.toString(),
+    };
     onAddEvent(newEvent);
   };
 
-  const maxLength = 250;
+  const handleCancel = () => {
+    console.log("Form cancelled");
+    onClose();
+  };
+
+  const maxLength = 450;
 
   return (
     <div className={`modal ${showForm ? "is-active is-clipped" : ""}`}>
@@ -57,9 +46,10 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                   className="input"
                   type="text"
                   name="title"
-                  value={formTitle}
                   placeholder="Event Title"
-                  onChange={(e) => setTitle(e.target.value)}
+                  minLength={5}
+                  maxLength={50}
+                  title="Title must be at least 5 characters long"
                   required
                 />
                 <span className="icon is-small is-left">
@@ -86,8 +76,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 <input
                   className="input"
                   name="guestList"
-                  value={formGuests}
-                  onChange={(e) => setGuests(e.target.value)}
                   type="text"
                   placeholder="Guests"
                 />
@@ -103,8 +91,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                   className="input"
                   name="date"
                   type="date"
-                  value={formDate}
-                  onChange={(e) => setDate(e.target.value)}
+                  min={defaultDate}
                   placeholder="dd/mm/yyyy"
                   required
                 />
@@ -120,8 +107,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                   className="input"
                   name="venue"
                   type="text"
-                  value={formVenue}
-                  onChange={(e) => setVenue(e.target.value)}
                   placeholder="Venue"
                   required
                 />
@@ -136,10 +121,9 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 <input
                   className="input"
                   name="pricing"
-                  value={formPricing}
-                  onChange={(e) => setPricing(e.target.valueAsNumber)}
                   type="number"
                   step={0.01}
+                  min={0.0}
                   placeholder="10.00"
                   required
                 />
@@ -153,11 +137,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
               <label className="label">Category</label>
               <div className="control has-icons-left">
                 <div className="select">
-                  <select
-                    value={formCategory}
-                    onChange={(e) => setCategory(e.target.value)}
-                    name="category"
-                  >
+                  <select name="category">
                     <option value="Celebration">Celebration</option>
                     <option value="Travel">Travel</option>
                     <option value="Get Together">Get Together</option>
@@ -171,25 +151,24 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 <textarea
                   className="textarea"
                   name="description"
-                  value={formDescription}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder={`Give a brief description of the event. (${maxLength} words)`}
+                  maxLength={maxLength}
+                  placeholder={`Give a brief description of the event and any helpful links. (${maxLength} words)`}
                 ></textarea>
               </div>
             </div>
           </section>
           <footer className="modal-card-foot">
             <div className="buttons">
-              <Button
-                styling="button is-link"
-                label={"Confirm"}
-                onClick={handleSubmit}
-              ></Button>
-              <Button
-                styling={"button is-link is-light"}
-                label={"Cancel"}
-                onClick={onClose}
-              ></Button>
+              <button className="button is-link" type="submit">
+                Confirm
+              </button>
+              <button
+                className="button is-link-light"
+                type="button"
+                onClick={handleCancel}
+              >
+                Cancel
+              </button>
             </div>
           </footer>
         </form>
