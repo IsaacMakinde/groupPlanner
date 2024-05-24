@@ -38,10 +38,11 @@ const Home: React.FC = () => {
       guests: "Isaac",
     },
   ]);
+
   const handleEventCreateButton = () => {
     console.log("Create Event!");
     // trigger a form to be displayed
-    setShowForm(true);
+    setShowForm((showForm) => !showForm);
   };
   const handleAddEvent = (event: Event) => {
     setEventsList([...eventsList, event]);
