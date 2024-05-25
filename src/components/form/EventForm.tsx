@@ -10,8 +10,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
 
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
-    const newEvent: Event = {
-      id: Math.random(),
+    const newEvent = {
       title: payload.title.toString(),
       date: payload.date.toString(),
       venue: payload.venue.toString(),
