@@ -1,55 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/ui/Button";
 import EventForm from "../components/form/EventForm";
 import EventList from "../components/ui/EventList";
 import Event from "../interfaces/EventInter";
+import { getEvents, createEvent } from "../services/EventService";
 
 const Home: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
-  const [eventsList, setEventsList] = useState<Event[]>([
-    {
-      id: 1,
-      title: "Event 1",
-      date: "01/01/2024",
-      venue: "Citywest",
-      description: "null",
-      category: "Celebration",
-      pricing: 12.5,
-      guests: "Isaac",
-    },
-    {
-      id: 2,
-      title: "Event 2",
-      date: "01/01/2024",
-      venue: "Citywest",
-      description: "null",
-      category: "Celebration",
-      pricing: 12.5,
-      guests: "Isaac",
-    },
-    {
-      id: 3,
-      title: "Event 3",
-      date: "01/01/2024",
-      venue: "Citywest",
-      description: "null",
-      category: "Celebration",
-      pricing: 12.5,
-      guests: "Isaac",
-    },
-  ]);
+  const [eventsList, setEventsList] = useState<Event[]>(null);
 
   const handleEventCreateButton = () => {
     console.log("Create Event!");
     // trigger a form to be displayed
     setShowForm((showForm) => !showForm);
   };
-  const handleAddEvent = (event: Event) => {
-    setEventsList([...eventsList, event]);
+  const handleAddEvent = async (event: Event) => {
+    const response = await createEvent(event);
+    const newEvent = response.data;
+    setEventsList([...eventsList, newEvent]);
     console.log("Event added", event);
     console.log(eventsList);
     setShowForm(false);
   };
+
+  useEffect(() => {
+    console.log("use effect ran");
+    getEvents().then((data) => {
+      setEventsList(data);
+    });
+  }, []);
 
   return (
     <div>
@@ -68,7 +47,7 @@ const Home: React.FC = () => {
           onAddEvent={handleAddEvent}
         ></EventForm>
       </section>
-      <EventList events={eventsList} />
+      {eventsList && <EventList events={eventsList} />}
     </div>
   );
 };

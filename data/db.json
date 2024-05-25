@@ -1,0 +1,79 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "a title",
+      "date": "2024-05-25",
+      "venue": "a venue",
+      "description": "a description",
+      "category": "Travel",
+      "pricing": 0,
+      "guests": "me"
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "date": "2024-05-25",
+      "venue": "a venue",
+      "description": "a description",
+      "category": "Travel",
+      "pricing": 0,
+      "guests": "me"
+    },
+    {
+      "id": "3",
+      "title": "test1",
+      "date": "2024-05-01",
+      "venue": "town",
+      "description": "blah",
+      "category": "Travel",
+      "pricing": 20,
+      "guests": "me"
+    },
+    {
+      "id": "4d9c",
+      "title": "test1",
+      "date": "2024-05-01",
+      "venue": "town",
+      "description": "blah",
+      "category": "Travel",
+      "pricing": 20.5,
+      "guests": "me"
+    },
+    {
+      "id": "1323",
+      "title": "Skye's Graduation",
+      "date": "2024-05-26",
+      "venue": "LIffey valley",
+      "description": "skye is graudation bring a gift",
+      "category": "Celebration",
+      "pricing": 20,
+      "guests": "Isaac, Destiny"
+    },
+    {
+      "id": "21c2",
+      "title": "Maxin BBQ",
+      "date": "2024-05-27",
+      "venue": "Lucan",
+      "description": "lets party",
+      "category": "Celebration",
+      "pricing": 20,
+      "guests": "Isaac, Destiny"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
