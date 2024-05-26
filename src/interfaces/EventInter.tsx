@@ -1,6 +1,7 @@
 interface Event {
   id: number;
   title: string;
+  host: string;
   date: string;
   venue: string;
   description?: string;
