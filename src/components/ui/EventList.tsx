@@ -5,8 +5,8 @@ interface EventListProps {
 import EventCard from "./EventCard";
 const EventList: React.FC<EventListProps> = ({ events }) => {
   return (
-    <section className="section">
-      <p>Events</p>
+    <section className="section is-capitalized">
+      <p className="title is-4">upcoming events</p>
       {events.map((event: Event) => (
         <EventCard key={event.id} eventObject={event} />
       ))}
