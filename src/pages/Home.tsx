@@ -32,7 +32,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <section className="section">
+      <section className="top section">
         <div className="container">
           <h1 className="title is-1">Welcome to the Home page</h1>
           <Button

@@ -1,5 +1,5 @@
 import Event from "../../interfaces/EventInter";
-import React, { FC } from "react";
+import { FC } from "react";
 import unsplash001 from "../../assets/img/unsplash-001.jpg";
 import { DateTimeFormatOptions } from "intl";
 interface EventCardProps {
