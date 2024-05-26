@@ -10,6 +10,17 @@
       "category": "Get Together",
       "pricing": 10,
       "guests": "Destiny, Raj, Angel, Hope, Skye"
+    },
+    {
+      "id": "00da",
+      "title": "Sleep",
+      "host": "Isaac",
+      "date": "2024-05-26",
+      "venue": "Maxine's house",
+      "description": "temp",
+      "category": "Celebration",
+      "pricing": 20,
+      "guests": "Misha, Jane"
     }
   ],
   "comments": [
