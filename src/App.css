@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.tag {
+  margin: 3px;
+}
+
 .section {
   border: 2px solid red;
   padding: 50px;

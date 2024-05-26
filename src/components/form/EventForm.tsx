@@ -1,5 +1,3 @@
-import Event from "../../interfaces/EventInter";
-
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
 
@@ -12,6 +10,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
+      host: payload.host.toString(),
       date: payload.date.toString(),
       venue: payload.venue.toString(),
       description: payload.description.toString(),
