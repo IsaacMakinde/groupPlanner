@@ -3,6 +3,7 @@ interface EventListProps {
   events: Event[];
 }
 import EventCard from "./EventCard";
+
 const EventList: React.FC<EventListProps> = ({ events }) => {
   return (
     <section className="section is-capitalized">

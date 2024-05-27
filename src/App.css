@@ -1,8 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 1rem 2rem 1rem;
   text-align: center;
+  border: 2px solid blue;
 }
 
 .tag {
@@ -11,5 +12,80 @@
 
 .section {
   border: 2px solid red;
-  padding: 50px;
+  padding: 0px 50px;
 }
+
+.nav-list {
+  height: 128px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 10px black;
+  padding-bottom: 10px 10%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.nav-item {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+  transition: all 200ms ease-in;
+}
+
+.nav-item a:hover {
+  color: aquamarine;
+}
+
+.nav-item:first-child {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.logo {
+  cursor: pointer;
+  width: 128px;
+  height: 128px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+/* .Navbar {
+  border: 2px solid blue;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 10%;
+}
+
+
+/* .nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav-links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+  color: aquamarine;
+}
+
+.cta button {
+  cursor: pointer;
+} */
