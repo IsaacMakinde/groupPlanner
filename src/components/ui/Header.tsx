@@ -16,7 +16,7 @@ const Header = () => {
           </Link>
         </li>
         <li className="nav-item is-size-5">
-          <Link to={"/contact"}>Contact me</Link>
+          <Link to={"/contact"}>Events</Link>
         </li>
         <li className="nav-item">
           <button className="btn button is-link is-size-6">Login</button>
