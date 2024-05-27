@@ -1,5 +1,5 @@
 import Event from "../../interfaces/EventInter";
-import React, { FC } from "react";
+import { FC } from "react";
 import unsplash001 from "../../assets/img/unsplash-001.jpg";
 import { DateTimeFormatOptions } from "intl";
 interface EventCardProps {
@@ -38,7 +38,7 @@ const EventCard: FC<EventCardProps> = ({ eventObject }) => {
               </div>
               <div className="is-flex has-text-warning flex-direction-row is-justify-content-start is-align-items-center">
                 <i className="fas fa-euro-sign"></i>
-                <p className="mx-2">{eventObject.pricing}</p>
+                <p className="mx-2">{eventObject.pricing.toPrecision(4)}</p>
               </div>
             </div>
           </div>
