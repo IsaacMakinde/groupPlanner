@@ -1,5 +1,50 @@
 {
-  "events": [],
+  "events": [
+    {
+      "id": "b32e",
+      "title": "Hell and Back",
+      "host": "Isaac",
+      "date": "2024-06-08",
+      "venue": "Wicklow",
+      "description": "",
+      "category": "Get Together",
+      "pricing": 10,
+      "guests": "Hope, Skye"
+    },
+    {
+      "id": "0632",
+      "title": "Christmas",
+      "host": "Isaac",
+      "date": "2024-12-25",
+      "venue": "Home",
+      "description": "All I want for christmas is you",
+      "category": "Celebration",
+      "pricing": 1000,
+      "guests": "Santa"
+    },
+    {
+      "id": "8281",
+      "title": "Halloween",
+      "host": "Isaac",
+      "date": "2024-06-08",
+      "venue": "Wicklow",
+      "description": "boo!",
+      "category": "Celebration",
+      "pricing": 20,
+      "guests": "Isaac, Destiny"
+    },
+    {
+      "id": "3622",
+      "title": "Freedom Day",
+      "host": "Isaac",
+      "date": "2024-07-04",
+      "venue": "America",
+      "description": "freedom day!",
+      "category": "Celebration",
+      "pricing": 100,
+      "guests": "victor"
+    }
+  ],
   "comments": [
     {
       "id": "1",
