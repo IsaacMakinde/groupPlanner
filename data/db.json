@@ -1,28 +1,5 @@
 {
-  "events": [
-    {
-      "id": "5a85",
-      "title": "Hell and Back",
-      "host": "Isaac",
-      "date": "2024-06-08",
-      "venue": "Wicklow",
-      "description": "HELL & BACK is Ireland's toughest physical and mental endurance challenge, specifically designed and created by our award-winning outdoor specialists to push your physical and mental boundaries to the limit.",
-      "category": "Get Together",
-      "pricing": 10,
-      "guests": "Destiny, Raj, Angel, Hope, Skye"
-    },
-    {
-      "id": "00da",
-      "title": "Sleep",
-      "host": "Isaac",
-      "date": "2024-05-26",
-      "venue": "Maxine's house",
-      "description": "temp",
-      "category": "Celebration",
-      "pricing": 20,
-      "guests": "Misha, Jane"
-    }
-  ],
+  "events": [],
   "comments": [
     {
       "id": "1",

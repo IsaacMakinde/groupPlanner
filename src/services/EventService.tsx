@@ -22,3 +22,28 @@ export const createEvent = async (event) => {
     throw error;
   }
 };
+
+//  Edit an event
+export const editEvent = async (event) => {
+  try {
+    const response = await axios.put(
+      `${API_BASE_URL}/events/${event.id}`,
+      event
+    );
+    return response;
+  } catch (error) {
+    console.log("Error editing event", error);
+    throw error;
+  }
+};
+
+// Delete an event
+export const deleteEvent = async (id) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/events/${id}`);
+    return response;
+  } catch (error) {
+    console.log("Error deleting event", error);
+    throw error;
+  }
+};
