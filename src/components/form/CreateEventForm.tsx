@@ -2,10 +2,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
 
   const handleSubmit = (e) => {
-    console.log("Form submitted");
-    console.log("trigger", e.target);
     e.preventDefault();
-
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
     const newEvent = {
@@ -19,10 +16,10 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
       guests: payload.guestList.toString(),
     };
     onAddEvent(newEvent);
+    e.target.reset();
   };
 
   const handleCancel = () => {
-    console.log("Form cancelled");
     onClose();
   };
 
@@ -137,7 +134,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 <div className="select">
                   <select name="category">
                     <option value="Celebration">Celebration</option>
-                    <option value="Travel">Travel</option>
+                    <option value="Travel">Travel Plan</option>
                     <option value="Get Together">Get Together</option>
                   </select>
                 </div>
