@@ -61,25 +61,30 @@ const EventList: React.FC = () => {
   };
   return (
     <section className="section is-capitalized">
-      <button
-        className="button is-primary"
-        aria-label="createEventButton"
-        onClick={handleEventCreateButton}
-      >
-        Add Event
-      </button>
       <p className="title is-4">upcoming events</p>
-      {eventsList.length === 0 ? (
-        <p>No events available</p>
-      ) : (
-        eventsList.map((event: Event) => (
-          <EventCard
-            key={event.id}
-            eventObject={event}
-            onDeleteEvent={handleFormOpen}
-          />
-        ))
-      )}
+      <div className="container event-list-controls">
+        <button
+          className="button is-secondary is-medium is-rounded"
+          aria-label="createEventButton"
+          onClick={handleEventCreateButton}
+        >
+          Add Event
+        </button>{" "}
+      </div>
+      <div className="wrapper">
+        {eventsList.length === 0 ? (
+          <p>No events available</p>
+        ) : (
+          eventsList.map((event: Event) => (
+            <EventCard
+              key={event.id}
+              eventObject={event}
+              onDeleteEvent={handleFormOpen}
+            />
+          ))
+        )}
+      </div>
+
       <EventForm
         showForm={showCreateForm}
         onClose={handleEventCreateButton}
