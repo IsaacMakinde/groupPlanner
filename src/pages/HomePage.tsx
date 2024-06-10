@@ -1,8 +1,8 @@
 const Contact: React.FC = () => {
   return (
     <div>
-      <h1>Event Page</h1>
-      <p>This is the event page where all event will be displayed.</p>
+      <h1>Home page</h1>
+      <p>where landing, introduction instruction will be displayed</p>
     </div>
   );
 };
