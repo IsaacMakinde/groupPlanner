@@ -1,5 +1,61 @@
 {
-  "events": [],
+  "events": [
+    {
+      "id": "b32e",
+      "title": "Hell and Back",
+      "host": "Isaac",
+      "date": "2024-06-08",
+      "venue": "Wicklow",
+      "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum",
+      "category": "Get Together",
+      "pricing": 10,
+      "guests": "Hope, Skye"
+    },
+    {
+      "id": "0632",
+      "title": "Christmas",
+      "host": "Isaac",
+      "date": "2024-12-25",
+      "venue": "Home",
+      "description": "All I want for christmas is you",
+      "category": "Celebration",
+      "pricing": 1000,
+      "guests": "Santa"
+    },
+    {
+      "id": "8281",
+      "title": "Halloween",
+      "host": "Isaac",
+      "date": "2024-06-08",
+      "venue": "Wicklow",
+      "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum",
+      "category": "Celebration",
+      "pricing": 20,
+      "guests": "Isaac, Destiny"
+    },
+    {
+      "id": "3622",
+      "title": "Freedom Day",
+      "host": "Isaac",
+      "date": "2024-07-04",
+      "venue": "America",
+      "description": "freedom day!",
+      "category": "Celebration",
+      "pricing": 100,
+      "guests": "victor"
+    },
+    {
+      "id": "1009",
+      "title": "The Back Page",
+      "host": "Isaac",
+      "date": "2024-06-21",
+      "venue": "Kildare",
+      "description": "Me and Angel are going to the Back page!",
+      "category": "Get Together",
+      "pricing": 50,
+      "guests": "Angel"
+    }
+  ],
   "comments": [
     {
       "id": "1",
