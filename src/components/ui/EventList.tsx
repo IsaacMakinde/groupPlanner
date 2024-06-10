@@ -61,25 +61,58 @@ const EventList: React.FC = () => {
   };
   return (
     <section className="section is-capitalized">
-      <button
-        className="button is-primary"
-        aria-label="createEventButton"
-        onClick={handleEventCreateButton}
-      >
-        Add Event
-      </button>
       <p className="title is-4">upcoming events</p>
-      {eventsList.length === 0 ? (
-        <p>No events available</p>
-      ) : (
-        eventsList.map((event: Event) => (
-          <EventCard
-            key={event.id}
-            eventObject={event}
-            onDeleteEvent={handleFormOpen}
-          />
-        ))
-      )}
+      <div className="event-list-controls">
+        <div className="field">
+          <label className="label has-text-primary">Sort by</label>
+          <div className="control">
+            <div className="select">
+              <select>
+                <option>Date</option>
+                <option>Location</option>
+                <option>Guests</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label has-text-primary">Username</label>
+          <div className="control has-icons-left has-icons-right">
+            <input
+              className="input is-info"
+              type="text"
+              placeholder="Search for events"
+            ></input>
+            <span className="icon is-small is-left">
+              <i className="fa fa-search"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="wrapper">
+        {eventsList.length === 0 ? (
+          <p>No events available</p>
+        ) : (
+          eventsList.map((event: Event) => (
+            <EventCard
+              key={event.id}
+              eventObject={event}
+              onDeleteEvent={handleFormOpen}
+            />
+          ))
+        )}
+
+        <button
+          className="add-event-button button is-link is-medium is-rounded"
+          aria-label="createEventButton"
+          onClick={handleEventCreateButton}
+        >
+          Add Event
+        </button>
+      </div>
+
       <EventForm
         showForm={showCreateForm}
         onClose={handleEventCreateButton}
