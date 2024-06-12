@@ -1,6 +1,8 @@
-$cream: #eae4df;
-
-$blue: #7ee2fc;
+$cream: #eae4df; // $primary
+$blue: #7ee2fc; // $secondary $link
+$text: #1d1e18; // $grey-dark
+$background: #d0d1cd; // $grey-light
+$actions: #fa7c91; // $pink
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -8,7 +10,7 @@ $blue: #7ee2fc;
   font-weight: 400;
   margin-inline: auto;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #eff0eb;
+  background-color: white;
   border: 2px solid blue;
   width: 90%;
 

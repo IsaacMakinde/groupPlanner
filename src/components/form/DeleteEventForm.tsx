@@ -5,8 +5,6 @@ interface DeleteEventFormProps {
   showForm: boolean;
   onClose: () => void;
   deleteItem: (eventId: string) => void;
-  //   event: Event;
-  //   onDeleteEvent: (eventId: string) => void;
 }
 const DeleteEventForm: React.FC<DeleteEventFormProps> = ({
   showForm,
