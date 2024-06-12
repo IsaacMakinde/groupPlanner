@@ -1,5 +1,6 @@
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
+  const maxLength = 450;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +23,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const handleCancel = () => {
     onClose();
   };
-
-  const maxLength = 450;
 
   return (
     <div className={`modal ${showForm ? "is-active is-clipped" : ""}`}>
