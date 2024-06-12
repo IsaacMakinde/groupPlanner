@@ -4,7 +4,10 @@
 
 .section {
   border: 2px solid red;
-  padding: 0px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-section {
@@ -71,7 +74,18 @@
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
   grid-row-gap: 17px;
-  overflow: scroll;
+  overflow: auto;
+}
+
+.event-card-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-height: 4rem;
+  flex-grow: 1;
+  row-gap: 0.5rem;
+  overflow-y: auto;
 }
 
 .event-card {
@@ -113,7 +127,6 @@
 .event-info {
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
 }
 
 .event-user-cta {
@@ -204,5 +217,6 @@
 .add-event-button {
   transition: all 200ms ease-in;
   width: 128px;
-  justify-self: flex-end;
+  align-self: flex-end;
+  margin: 1rem 2rem;
 }
