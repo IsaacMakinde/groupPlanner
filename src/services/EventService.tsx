@@ -24,7 +24,7 @@ export const createEvent = async (event) => {
 };
 
 //  Edit an event
-export const editEvent = async (event) => {
+export const updateEvent = async (event) => {
   try {
     const response = await axios.put(
       `${API_BASE_URL}/events/${event.id}`,
