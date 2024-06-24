@@ -79,7 +79,13 @@
       "postId": "1"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": "1",
+      "name": "Isaac",
+      "email": "isaacmakinde1@gmail.com",
+      "password": "123456",
+      "events": ["b32e", "0632", "8281", "433c", "14e5"]
+    }
+  ]
 }

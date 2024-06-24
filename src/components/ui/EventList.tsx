@@ -9,7 +9,11 @@ import {
   updateEvent,
 } from "../../services/EventService";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../state/store";
 import EventCard from "./EventCard";
+import Counter from "./Counter";
+import fetchEvents from "../../slices/eventsSlice";
 
 const EventList: React.FC = () => {
   const [showDeleteForm, setShowDeleteForm] = useState(false);
@@ -102,6 +106,8 @@ const EventList: React.FC = () => {
   return (
     <section className="section is-capitalized">
       <p className="title is-4">upcoming events</p>
+
+      <Counter></Counter>
       <div className="event-list-controls">
         <div className="field">
           <label className="label has-text-primary">Sort by</label>
