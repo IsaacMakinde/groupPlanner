@@ -1,3 +1,5 @@
+import User from "./UserInter";
+
 interface Event {
   id: string;
   title: string;
@@ -7,7 +9,7 @@ interface Event {
   description?: string;
   category?: string;
   pricing: number;
-  guests: string;
+  guests: User[];
 }
 
 export default Event;
