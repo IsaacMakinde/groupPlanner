@@ -9,11 +9,8 @@ import {
   updateEvent,
 } from "../../services/EventService";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../state/store";
 import EventCard from "./EventCard";
 import Counter from "./Counter";
-import fetchEvents from "../../slices/eventsSlice";
 
 const EventList: React.FC = () => {
   const [showDeleteForm, setShowDeleteForm] = useState(false);
