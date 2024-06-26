@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate } from "react-router";
 
 const LoginForm = () => {
-  const [isSigningIn, setIsSigningIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [isSigningIn] = useState(false);
+  const [errorMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      const formData = new FormData(e.target);
-      const payload = Object.fromEntries(formData);
-      const email = payload.email.toString();
-      const password = payload.password.toString();
+    // if (!isSigningIn) {
+    //   setIsSigningIn(true);
+    //   const formData = new FormData(e.target);
+    //   const payload = Object.fromEntries(formData);
+    //   const email = payload.email.toString();
+    //   const password = payload.password.toString();
 
-      setIsSigningIn(true);
-    }
+    //   setIsSigningIn(true);
+    // }
   };
 
   return (
