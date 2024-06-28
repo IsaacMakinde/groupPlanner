@@ -39,6 +39,13 @@
   max-height: 100px;
 }
 
+.event-card-footer {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .hero::before {
   content: "";
   position: absolute;

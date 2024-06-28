@@ -58,7 +58,18 @@ const EventCard: FC<EventCardProps> = ({
         <p className="is-size-7 has-text-grey-dark event-card-description">
           {eventObject.description}
         </p>
+
+        <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
+          <p className="is-size-7 has-text-grey column">
+            {eventObject.category}
+          </p>
+
+          <button className="button is-small is-primary column is-2">
+            More Info
+          </button>
+        </div>
       </div>
+
       <img src={unsplash001} alt="unsplash001" />
     </div>
   );
