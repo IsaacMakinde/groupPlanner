@@ -69,7 +69,7 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
                   name="host"
                   type="text"
                   placeholder="Host name"
-                  defaultValue={event?.host}
+                  defaultValue={event?.host.name}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-id-badge"></i>

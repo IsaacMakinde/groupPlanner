@@ -11,15 +11,22 @@
     "test": "jest",
     "test:prod": "ng test --browser=chrome",
     "build-bulma": "sass --load-path=node_modules my-bulma-project.scss my-bulma-project.css",
-    "start": "npm run build-bulma -- --watch"
+    "start": "npm run build-bulma -- --watch",
+    "server": "json-server --watch data/db.json --port 3000"
   },
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
     "bulma": "^1.0.1",
+    "firebase": "^10.12.2",
     "intl": "^1.2.5",
     "json-server": "^1.0.0-beta.0",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.2",
+    "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1",
     "regenerator-runtime": "^0.14.1",
     "sass": "^1.77.4",
