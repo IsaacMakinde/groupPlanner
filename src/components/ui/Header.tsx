@@ -19,7 +19,9 @@ const Header = () => {
           <Link to={"/contact"}>Events</Link>
         </li>
         <li className="nav-item">
-          <button className="btn button is-link is-size-6">Login</button>
+          <Link to={"/login"}>
+            <button className="btn button is-link is-size-6">Login</button>
+          </Link>
         </li>
       </ul>
     </nav>
