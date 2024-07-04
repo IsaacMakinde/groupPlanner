@@ -61,7 +61,7 @@ const EventCard: FC<EventCardProps> = ({
 
         <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
           <p className="is-size-7 has-text-grey column">
-            {eventObject.category}
+            <span className="tag is-info">{eventObject.category}</span>
           </p>
 
           <button className="button is-small is-primary column is-2">
