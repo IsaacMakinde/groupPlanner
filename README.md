@@ -20,3 +20,4 @@ Currently, two official plugins are available:
 ## Licenses
 
 ## Getting started
+![alt text](image.png)

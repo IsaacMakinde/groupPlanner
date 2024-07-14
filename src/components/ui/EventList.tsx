@@ -10,7 +10,6 @@ import {
 } from "../../services/EventService";
 import { useEffect, useState } from "react";
 import EventCard from "./EventCard";
-import Counter from "./Counter";
 
 const EventList: React.FC = () => {
   const [showDeleteForm, setShowDeleteForm] = useState(false);
@@ -19,6 +18,9 @@ const EventList: React.FC = () => {
   const [eventsList, setEventsList] = useState<Event[]>([]);
   const [eventToDelete, setEventToDelete] = useState<Event>(null);
   const [eventToEdit, setEventToEdit] = useState<Event>(null);
+  const [Ascending, setAscending] = useState(true);
+  const [sortCriteria, setSortCriteria] = useState("Date");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     console.log("use effect ran");
@@ -63,6 +65,10 @@ const EventList: React.FC = () => {
     setShowEditForm(false);
   };
 
+  const setSort = (e) => {
+    console.log(e.target.value);
+    setSortCriteria(e.target.value);
+  };
   const editEventFormAction = async (eventObject) => {
     try {
       const response = await updateEvent(eventObject);
@@ -77,6 +83,39 @@ const EventList: React.FC = () => {
     } catch (error) {
       console.log("Error editing event", error);
     }
+  };
+
+  const setOrder = (e) => {
+    console.log(e.target.value);
+
+    if (e.target.value === "Ascending") {
+      setAscending(true);
+    } else {
+      setAscending(false);
+    }
+
+    eventsList.sort((a, b) => {
+      if (Ascending) {
+        if (sortCriteria === "Host") {
+          return a.host.name.localeCompare(b.host.name);
+        } else if (sortCriteria === "Category") {
+          return a.category.localeCompare(b.category);
+        }
+        return a.date.localeCompare(b.date);
+      } else {
+        if (sortCriteria === "Host") {
+          return b.host.name.localeCompare(a.host.name);
+        } else if (sortCriteria === "Category") {
+          return b.category.localeCompare(a.category);
+        }
+        return b.date.localeCompare(a.date);
+      }
+    });
+  };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    console.log(searchQuery);
   };
 
   const handleDeleteFormOpen = (eventId: string) => {
@@ -102,28 +141,30 @@ const EventList: React.FC = () => {
 
   return (
     <section className="section is-capitalized">
-      <p className="title is-4">upcoming events</p>
+      <div className="columns  is-variable is-2  list-controls">
+        <div className="column is-7">
+          <h2 className="is-title is-size-4 has-text-primary">
+            Upcoming events
+          </h2>
+        </div>
 
-      <Counter></Counter>
-      <div className="event-list-controls">
-        <div className="field">
+        <div className="field column">
           <label className="label has-text-primary">Sort by</label>
           <div className="control">
             <div className="select">
-              <select>
+              <select onChange={setSort}>
                 <option>Date</option>
-                <option>Location</option>
-                <option>Guests</option>
+                <option>Host</option>
+                <option>Category</option>
               </select>
             </div>
           </div>
         </div>
-
-        <div className="field">
-          <label className="label has-text-primary">Order</label>
+        <div className="field column">
+          <label className="label has-text-primary">Order by</label>
           <div className="control">
             <div className="select">
-              <select>
+              <select onChange={setOrder}>
                 <option>Ascending</option>
                 <option>Descending</option>
               </select>
@@ -131,10 +172,18 @@ const EventList: React.FC = () => {
           </div>
         </div>
 
-        <div className="field">
-          <label className="label has-text-primary">Username</label>
+        <div className="field column">
+          <label className="label has-text-primary">Find Event</label>
           <div className="control has-icons-left has-icons-right">
             <input
+              onChange={(e) => handleSearch(e)}
+              onKeyDown={(e) => {
+                {
+                  if (e.key === "Enter") {
+                    console.log(e.key);
+                  }
+                }
+              }}
               className="input is-info"
               type="text"
               placeholder="Search for events"
@@ -162,6 +211,7 @@ const EventList: React.FC = () => {
       </div>
 
       <button
+        id="createEventButton"
         className="add-event-button button is-link is-medium is-rounded"
         aria-label="createEventButton"
         onClick={handleEventCreateButton}

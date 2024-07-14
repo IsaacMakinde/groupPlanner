@@ -3,21 +3,8 @@
     {
       "id": "b32e",
       "title": "Hell and Ham",
-      "host": {
-        "id": "1",
-        "name": "Isaac",
-        "budget": 1000,
-        "email": "isaacmakinde1@gmail.com",
-        "password": "123456",
-        "events": [
-          "b32e",
-          "0632",
-          "8281",
-          "433c",
-          "14e5"
-        ]
-      },
-      "date": "2024-06-14",
+      "host": "",
+      "date": "2024-07-19",
       "venue": "Wicklow",
       "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum",
       "category": "Celebration",
@@ -27,7 +14,7 @@
     {
       "id": "0632",
       "title": "Honika",
-      "host": "Isaac",
+      "host": "1",
       "date": "2024-12-25",
       "venue": "Home",
       "description": "All I want for christmas is you",
@@ -38,20 +25,7 @@
     {
       "id": "8281",
       "title": "Halloween",
-      "host": {
-        "id": "1",
-        "name": "Isaac",
-        "budget": 1000,
-        "email": "isaacmakinde1@gmail.com",
-        "password": "123456",
-        "events": [
-          "b32e",
-          "0632",
-          "8281",
-          "433c",
-          "14e5"
-        ]
-      },
+      "host": "1",
       "date": "2024-06-08",
       "venue": "Wicklow",
       "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum",
@@ -60,72 +34,15 @@
       "guests": "Skye, Destiny"
     },
     {
-      "id": "1009",
-      "title": "The Back Page",
-      "host": {
-        "id": "d69e",
-        "name": "Angel",
-        "budget": 500,
-        "email": "angel45@gmail.com",
-        "password": "123456",
-        "events": [
-          "1009"
-        ]
-      },
-      "date": "2024-06-21",
-      "venue": "Kildare",
-      "description": "Me and Angel are going to the Back page!",
-      "category": "Get Together",
-      "pricing": 50,
-      "guests": "Skye, Destiny"
-    },
-    {
-      "id": "433c",
-      "title": "Dance Party",
-      "host": {
-        "id": "1",
-        "name": "Isaac",
-        "budget": 1000,
-        "email": "isaacmakinde1@gmail.com",
-        "password": "123456",
-        "events": [
-          "b32e",
-          "0632",
-          "8281",
-          "433c",
-          "14e5"
-        ]
-      },
-      "date": "2024-06-14",
-      "venue": "Wicklow",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes fro",
-      "category": "Celebration",
-      "pricing": 0.04,
-      "guests": "Skye, Destiny"
-    },
-    {
-      "id": "14e5",
-      "title": "Dance ",
-      "host": {
-        "id": "1",
-        "name": "Isaac",
-        "budget": 1000,
-        "email": "isaacmakinde1@gmail.com",
-        "password": "123456",
-        "events": [
-          "b32e",
-          "0632",
-          "8281",
-          "433c",
-          "14e5"
-        ]
-      },
-      "date": "2024-06-16",
-      "venue": "Wicklow",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes fro",
+      "id": "b3c8",
+      "title": "Skye's birthday",
+      "host": "Skye",
+      "date": "2024-07-11",
+      "venue": "Skye's",
+      "description": "dada",
       "category": "Travel",
-      "pricing": 0.02,
-      "guests": "Skye, Destiny"
+      "pricing": 20,
+      "guests": "Isaac, misha"
     }
   ],
   "comments": [
@@ -148,14 +65,7 @@
       "role": "admin",
       "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
       "email": "isaacmakinde1@gmail.com",
-      "password": "123456",
-      "events": [
-        "b32e",
-        "0632",
-        "8281",
-        "433c",
-        "14e5"
-      ]
+      "password": "123456"
     },
     {
       "id": "d69e",
@@ -164,10 +74,33 @@
       "role": "user",
       "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
       "email": "angel45@gmail.com",
-      "password": "123456",
-      "events": [
-        "1009"
-      ]
+      "password": "123456"
+    }
+  ],
+  "user_created_events": [
+    {
+      "user_id": "1",
+      "event_id": "b32e"
+    },
+    {
+      "user_id": "1",
+      "event_id": "0632"
+    },
+    {
+      "user_id": "1",
+      "event_id": "8281"
+    },
+    {
+      "user_id": "1",
+      "event_id": "1009"
+    },
+    {
+      "user_id": "d69e",
+      "event_id": "433c"
+    },
+    {
+      "user_id": "d69e",
+      "event_id": "14e5"
     }
   ]
 }

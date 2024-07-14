@@ -2,6 +2,7 @@ import Event from "../../interfaces/EventInter";
 import { FC } from "react";
 import unsplash001 from "../../assets/img/unsplash-001.jpg";
 import { DateTimeFormatOptions } from "intl";
+import { Link } from "react-router-dom";
 
 interface EventCardProps {
   eventObject: Event;
@@ -61,12 +62,12 @@ const EventCard: FC<EventCardProps> = ({
 
         <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
           <p className="is-size-7 has-text-grey column">
-            {eventObject.category}
+            <span className="tag is-info">{eventObject.category}</span>
           </p>
 
-          <button className="button is-small is-primary column is-2">
-            More Info
-          </button>
+          <Link to={`/events/${eventObject.id}`}>
+            <button className="button is-small is-primary">View Details</button>{" "}
+          </Link>
         </div>
       </div>
 
