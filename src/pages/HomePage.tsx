@@ -1,4 +1,4 @@
-const Contact: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <h1>Home page</h1>
@@ -7,4 +7,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default Home;

@@ -21,6 +21,7 @@ const EventList: React.FC = () => {
   const [Ascending, setAscending] = useState(true);
   const [sortCriteria, setSortCriteria] = useState("Date");
   const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     console.log("use effect ran");
     getEvents()
@@ -111,6 +112,12 @@ const EventList: React.FC = () => {
       }
     });
   };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    console.log(searchQuery);
+  };
+
   const handleDeleteFormOpen = (eventId: string) => {
     setShowDeleteForm(true);
     setEventToDelete(eventsList.find((event) => event.id === eventId));
@@ -136,7 +143,9 @@ const EventList: React.FC = () => {
     <section className="section is-capitalized">
       <div className="columns  is-variable is-2  list-controls">
         <div className="column is-7">
-          <h2 className="is-size-4 has-text-primary">Upcoming events</h2>
+          <h2 className="is-title is-size-4 has-text-primary">
+            Upcoming events
+          </h2>
         </div>
 
         <div className="field column">
@@ -167,7 +176,7 @@ const EventList: React.FC = () => {
           <label className="label has-text-primary">Find Event</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearch(e)}
               onKeyDown={(e) => {
                 {
                   if (e.key === "Enter") {
@@ -183,10 +192,6 @@ const EventList: React.FC = () => {
               <i className="fa fa-search"></i>
             </span>
           </div>
-        </div>
-
-        <div className="field column">
-          <button className="button is-primary">Reset</button>
         </div>
       </div>
 
@@ -206,6 +211,7 @@ const EventList: React.FC = () => {
       </div>
 
       <button
+        id="createEventButton"
         className="add-event-button button is-link is-medium is-rounded"
         aria-label="createEventButton"
         onClick={handleEventCreateButton}

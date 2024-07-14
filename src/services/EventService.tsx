@@ -12,6 +12,16 @@ export const getEvents = async () => {
   }
 };
 
+export const getEvent = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/events/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching event", error);
+    throw error;
+  }
+};
+
 // Create an event
 export const createEvent = async (event) => {
   try {
