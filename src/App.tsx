@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Contact from "./pages/EventsPage";
+import EventsPage from "./pages/EventsPage";
 import Home from "./pages/HomePage";
 import Header from "./components/ui/Header";
+import EventDetailsPage from "./pages/EventDetailsPage";
 import "./App.css";
 import LoginForm from "./components/form/LoginForm";
 import Footer from "./components/ui/Footer";
@@ -17,7 +18,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LoginForm />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/events/:id" element={<EventDetailsPage />} />
             </Routes>
             <Footer />
           </main>

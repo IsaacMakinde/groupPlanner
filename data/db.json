@@ -34,37 +34,15 @@
       "guests": "Skye, Destiny"
     },
     {
-      "id": "1009",
-      "title": "The Back Page",
-      "host": "1",
-      "date": "2024-06-21",
-      "venue": "Kildare",
-      "description": "Me and Angel are going to the Back page!",
-      "category": "Get Together",
-      "pricing": 50,
-      "guests": "Skye, Destiny"
-    },
-    {
-      "id": "433c",
-      "title": "Dance Party",
-      "host": "0",
-      "date": "2024-06-14",
-      "venue": "Wicklow",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes fro",
-      "category": "Celebration",
-      "pricing": 0.04,
-      "guests": "Skye, Destiny"
-    },
-    {
-      "id": "14e5",
-      "title": "Dance ",
-      "host": "0",
-      "date": "2024-06-16",
-      "venue": "Wicklow",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes fro",
+      "id": "b3c8",
+      "title": "Skye's birthday",
+      "host": "Skye",
+      "date": "2024-07-11",
+      "venue": "Skye's",
+      "description": "dada",
       "category": "Travel",
-      "pricing": 0.02,
-      "guests": "Skye, Destiny"
+      "pricing": 20,
+      "guests": "Isaac, misha"
     }
   ],
   "comments": [
@@ -87,8 +65,7 @@
       "role": "admin",
       "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
       "email": "isaacmakinde1@gmail.com",
-      "password": "123456",
-      "events": ["b32e", "0632", "8281", "433c", "14e5"]
+      "password": "123456"
     },
     {
       "id": "d69e",
@@ -97,8 +74,7 @@
       "role": "user",
       "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
       "email": "angel45@gmail.com",
-      "password": "123456",
-      "events": ["1009"]
+      "password": "123456"
     }
   ],
   "user_created_events": [
