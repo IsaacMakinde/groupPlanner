@@ -26,25 +26,25 @@ const EventCard: FC<EventCardProps> = ({
   onEditEvent,
 }) => {
   return (
-    <div className="event-card">
+    <div className="event-card is-mobile">
       <div className="event-card-cta">
         <div className="event-user-cta">
           <button
-            className="button is-small is-primary"
+            className="button is-medium is-primary"
             onClick={() => onEditEvent(eventObject.id)}
           >
             Edit
           </button>
           <button
-            className="button is-small is-danger"
+            className="button is-medium is-danger"
             onClick={() => onDeleteEvent(eventObject.id)}
           >
             Delete
           </button>
         </div>
         <div className="event-info">
-          <p className="is-size-5 has-text-info">{eventObject.venue}</p>
-          <p className="is-size-7 has-text-info">
+          <p className="is-size-4 has-text-info">{eventObject.venue}</p>
+          <p className="is-size-6 has-text-info">
             <i className="fas fa-euro-sign"></i>
             {eventObject.pricing.toFixed(2)}
           </p>
@@ -52,26 +52,30 @@ const EventCard: FC<EventCardProps> = ({
       </div>
 
       <div className="event-card-content">
-        <p className="is-size-7 has-text-danger event-card-date ">
+        <p className="is-size-6 has-text-danger event-card-date ">
           {formatDate(eventObject.date)}
         </p>
         <p className="event-card-title">{eventObject.title}</p>
-        <p className="is-size-7 has-text-grey-dark event-card-description">
+        <p className="is-size-6 has-text-grey-dark event-card-description">
           {eventObject.description}
         </p>
 
         <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
-          <p className="is-size-7 has-text-grey column">
-            <span className="tag is-info">{eventObject.category}</span>
+          <p className="is-size-6 has-text-grey column">
+            <span className="tag is-medium is-info is-hovered">
+              {eventObject.category}
+            </span>
           </p>
 
           <Link to={`/events/${eventObject.id}`}>
-            <button className="button is-small is-primary">View Details</button>{" "}
+            <button className="button is-medium is-primary">
+              View Details
+            </button>{" "}
           </Link>
         </div>
       </div>
 
-      <img src={unsplash001} alt="unsplash001" />
+      <img className="image is-128x128" src={unsplash001} alt="unsplash001" />
     </div>
   );
 };
