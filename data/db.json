@@ -2,7 +2,7 @@
   "events": [
     {
       "id": "b32e",
-      "title": "Hell and Ham",
+      "title": "Hell and Back",
       "host": "",
       "date": "2024-07-19",
       "venue": "Wicklow",
@@ -43,6 +43,17 @@
       "category": "Travel",
       "pricing": 20,
       "guests": "Isaac, misha"
+    },
+    {
+      "id": "d074",
+      "title": "First Holiday with Angel",
+      "host": "Isaac",
+      "date": "2024-07-31",
+      "venue": "Amsterdam",
+      "description": "We're going to the a'Dam lookout",
+      "category": "Celebration",
+      "pricing": 560,
+      "guests": "Isaac, Nico"
     }
   ],
   "comments": [
@@ -80,27 +91,33 @@
   "user_created_events": [
     {
       "user_id": "1",
-      "event_id": "b32e"
+      "event_id": "b32e",
+      "id": "d090"
     },
     {
       "user_id": "1",
-      "event_id": "0632"
+      "event_id": "0632",
+      "id": "d1fb"
     },
     {
       "user_id": "1",
-      "event_id": "8281"
+      "event_id": "8281",
+      "id": "a167"
     },
     {
       "user_id": "1",
-      "event_id": "1009"
+      "event_id": "1009",
+      "id": "77f5"
     },
     {
       "user_id": "d69e",
-      "event_id": "433c"
+      "event_id": "433c",
+      "id": "e239"
     },
     {
       "user_id": "d69e",
-      "event_id": "14e5"
+      "event_id": "14e5",
+      "id": "6762"
     }
   ]
 }

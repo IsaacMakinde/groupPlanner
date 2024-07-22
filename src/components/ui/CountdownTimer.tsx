@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CountdownTimer = ({ targetDate, eventTitle }) => {
   const [timeRemaining, setTimeRemaining] = useState({
@@ -39,15 +39,8 @@ const CountdownTimer = ({ targetDate, eventTitle }) => {
 
   return (
     <div className="container is-fullhd">
-      {/* <h1>{event.name}</h1>
-<p>{event.description}</p> */}
-
       <section className="hero event-banner is-medium is-fullwidth mb-6">
         <div className="hero-body countdown-div">
-          {/* <div className="container has-text-centered">
-            <p className="title">Event Starts on</p>
-          </div> */}
-
           <div className="container has-text-centered ">
             <div className="title">
               <div className="section">
