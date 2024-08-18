@@ -1,10 +1,12 @@
+import React from "react";
+
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 450;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
@@ -17,7 +19,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
       guests: payload.guestList.toString(),
     };
     onAddEvent(newEvent);
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   const handleCancel = () => {

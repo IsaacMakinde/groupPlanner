@@ -3,7 +3,7 @@ import User from "./UserInter";
 interface Event {
   id: string;
   title: string;
-  host: User;
+  host: string;
   date: string;
   venue: string;
   description?: string;

@@ -8,6 +8,15 @@
   box-shadow: 0 0 10px #fa7c91;
 }
 
+.photos-image-card {
+  transform: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.photos-image-card:hover {
+  box-shadow: 0 0 20px #fa7c91;
+}
+
 .tag {
   margin: 3px;
 }

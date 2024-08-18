@@ -1,17 +1,6 @@
 {
   "events": [
     {
-      "id": "b32e",
-      "title": "Hell and Back",
-      "host": "",
-      "date": "2024-07-19",
-      "venue": "Wicklow",
-      "description": "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum",
-      "category": "Celebration",
-      "pricing": 10,
-      "guests": "Skye, Destiny"
-    },
-    {
       "id": "0632",
       "title": "Honika",
       "host": "1",
@@ -34,15 +23,15 @@
       "guests": "Skye, Destiny"
     },
     {
-      "id": "b3c8",
-      "title": "Skye's birthday",
-      "host": "Skye",
-      "date": "2024-07-11",
-      "venue": "Skye's",
-      "description": "dada",
       "category": "Travel",
-      "pricing": 20,
-      "guests": "Isaac, misha"
+      "date": "2024-10-24",
+      "description": "It's the birthday of Victo and there will be a personal and public dinner",
+      "guests": "Isaac, Esther, Daniel",
+      "host": "Victor Makinde",
+      "pricing": 200,
+      "title": "V-sensei",
+      "venue": "Town",
+      "id": "b3c8"
     },
     {
       "id": "d074",
@@ -65,6 +54,28 @@
       "category": "Get Together",
       "pricing": 10,
       "guests": "pkkpk"
+    },
+    {
+      "id": "e17b",
+      "title": "Raj Graduation",
+      "host": "",
+      "date": "2024-09-06",
+      "venue": "Maynooth",
+      "description": "Raj is graduating.",
+      "category": "Celebration",
+      "pricing": 30,
+      "guests": "Isaac"
+    },
+    {
+      "id": "2d46",
+      "title": "Road Trip",
+      "host": "Maxine",
+      "date": "2024-08-03",
+      "venue": "Glendalough",
+      "description": "Hey we going on trip",
+      "category": "Travel",
+      "pricing": 10.99,
+      "guests": "Isaac, Angel, Dagi, Ammarin, Maxine"
     }
   ],
   "comments": [
