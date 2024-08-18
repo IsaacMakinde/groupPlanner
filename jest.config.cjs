@@ -10,3 +10,4 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testMatch: ["**/?(*.)+(spec|test).[jt]s?(x)"],
 };
+// TODO: Add more configurations as needed
