@@ -16,9 +16,9 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 450;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const payload = Object.fromEntries(formData);
     const newEvent = {
       id: event.id,
@@ -69,7 +69,7 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
                   name="host"
                   type="text"
                   placeholder="Host name"
-                  defaultValue={event?.host.name}
+                  defaultValue={event?.host}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-id-badge"></i>

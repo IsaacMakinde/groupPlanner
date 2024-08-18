@@ -1,20 +1,26 @@
 import axios from "axios";
-const API_BASE_URL = `http://localhost:3000`;
+import { API } from "./apiConfig";
 
+if (!API) {
+  console.log(API);
+  throw new Error("API URL not found");
+}
 // Fetch events
 export const getEvents = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/events`);
+    const response = await axios.get(`${API}/events`);
+    console.log("Events get  fetched", response.data);
     return response.data;
   } catch (error) {
     console.log("Error fetching events", error);
+    console.log("API", `${API}/events`);
     throw error;
   }
 };
 
 export const getEvent = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/events/${id}`);
+    const response = await axios.get(`${API}/events/${id}`);
     return response.data;
   } catch (error) {
     console.log("Error fetching event", error);
@@ -25,7 +31,7 @@ export const getEvent = async (id) => {
 // Create an event
 export const createEvent = async (event) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/events`, event);
+    const response = await axios.post(`${API}/events`, event);
     return response;
   } catch (error) {
     console.log("Error creating event", error);
@@ -36,10 +42,19 @@ export const createEvent = async (event) => {
 //  Edit an event
 export const updateEvent = async (event) => {
   try {
-    const response = await axios.put(
-      `${API_BASE_URL}/events/${event.id}`,
-      event
-    );
+    const toSend = {
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      venue: event.venue,
+      category: event.category,
+      pricing: event.pricing,
+    };
+
+    console.log("toSend", toSend);
+
+    const response = await axios.put(`${API}/events/${event.id}`, toSend);
+    console.log("Event updated", event);
     return response;
   } catch (error) {
     console.log("Error editing event", error);
@@ -50,7 +65,7 @@ export const updateEvent = async (event) => {
 // Delete an event
 export const deleteEvent = async (id) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/events/${id}`);
+    const response = await axios.delete(`${API}/events/${id}`);
     return response;
   } catch (error) {
     console.log("Error deleting event", error);

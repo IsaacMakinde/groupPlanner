@@ -6,6 +6,10 @@ import CountdownTimer from "../components/ui/CountdownTimer";
 import GuestList from "../components/ui/GuestList";
 import Reviews from "../components/form/Reviews";
 import Activities from "../components/ui/Activities";
+import Details from "../components/ui/Details";
+import Carpooling from "../components/form/Carpooling";
+import Photos from "../components/form/Photos";
+import { getEvent } from "../services/EventService";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,17 +19,11 @@ const EventDetailsPage = () => {
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
 
-  // if (!event) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // TODO: Fetch event using eventService method
   useEffect(() => {
-    fetch(`http://localhost:3000/events/${id}`)
-      .then((response) => response.json())
+    getEvent(id)
       .then((data) => {
+        console.log("Event fetched using get", data);
         setEvent(data);
-
         const newDate = new Date(data.date);
         setDate(newDate);
         setLoading(false);
@@ -107,7 +105,7 @@ const EventDetailsPage = () => {
             onClick={() => {
               setActiveTab("reviews");
             }}
-            className="is-active"
+            className={activeTab === "reviews" ? "is-active" : ""}
           >
             <a>
               <span className="icon is-small">
@@ -120,6 +118,7 @@ const EventDetailsPage = () => {
             onClick={() => {
               setActiveTab("details");
             }}
+            className={activeTab === "details" ? "is-active" : ""}
           >
             <a>
               <span className="icon is-small">
@@ -132,6 +131,7 @@ const EventDetailsPage = () => {
             onClick={() => {
               setActiveTab("activities");
             }}
+            className={activeTab === "activities" ? "is-active" : ""}
           >
             <a>
               <span className="icon is-small">
@@ -144,6 +144,7 @@ const EventDetailsPage = () => {
             onClick={() => {
               setActiveTab("carpooling");
             }}
+            className={activeTab === "carpooling" ? "is-active" : ""}
           >
             <a>
               <span className="icon is-small">
@@ -156,6 +157,7 @@ const EventDetailsPage = () => {
             onClick={() => {
               setActiveTab("photos");
             }}
+            className={activeTab === "photos" ? "is-active" : ""}
           >
             <a>
               <span className="icon is-small">
@@ -166,11 +168,17 @@ const EventDetailsPage = () => {
           </li>
         </ul>
       </div>
-      {activeTab === "photos" && <div>Photos</div>}
-      {activeTab === "carpooling" && <div>Carpooling</div>}
+      {activeTab === "photos" && <Photos />}
+      {activeTab === "carpooling" && <Carpooling />}
       {activeTab === "activities" && <Activities />}
-      {activeTab === "details" && <div>Details</div>}
+      {activeTab === "details" && <Details />}
       {activeTab === "reviews" && <Reviews />}
+
+      <div className="container buttons is-flex is-justify-content-center are-medium my-5">
+        <button className="button is-outlined is-danger">Cancel</button>
+        <button className="button is-outlined is-danger">Bail</button>
+        <button className="button is-primary">Add to Calendar</button>
+      </div>
     </div>
   );
 };

@@ -46,7 +46,7 @@ const EventCard: FC<EventCardProps> = ({
           <p className="is-size-4 has-text-info">{eventObject.venue}</p>
           <p className="is-size-6 has-text-info">
             <i className="fas fa-euro-sign"></i>
-            {eventObject.pricing.toFixed(2)}
+            {eventObject.pricing.toPrecision(4)}
           </p>
         </div>
       </div>
