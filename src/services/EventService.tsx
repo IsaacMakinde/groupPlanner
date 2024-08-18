@@ -1,7 +1,5 @@
 import axios from "axios";
-// import { API } from "./apiConfig";
-
-const API = "https://my-planner-api-51759a684968.herokuapp.com/api";
+import { API } from "./apiConfig";
 
 if (!API) {
   console.log(API);
