@@ -31,7 +31,6 @@ const EventList: React.FC = () => {
       } catch (error) {
         console.log("Error fetching events", error);
       } finally {
-        console.log("Events fetched", eventsList);
         setIsLoading(false);
       }
     };

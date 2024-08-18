@@ -1,5 +1,7 @@
 import axios from "axios";
-import { API } from "./apiConfig";
+// import { API } from "./apiConfig";
+
+const API = "https://my-planner-api-51759a684968.herokuapp.com/api";
 
 if (!API) {
   console.log(API);
@@ -13,7 +15,7 @@ export const getEvents = async () => {
     return response.data;
   } catch (error) {
     console.log("Error fetching events", error);
-    console.log("API", `${API}/events`);
+
     throw error;
   }
 };
