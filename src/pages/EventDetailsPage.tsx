@@ -7,6 +7,9 @@ import GuestList from "../components/ui/GuestList";
 import Reviews from "../components/form/Reviews";
 import Activities from "../components/ui/Activities";
 import Details from "../components/ui/Details";
+import Carpooling from "../components/form/Carpooling";
+import Photos from "../components/form/Photos";
+import { getEvent } from "../services/EventService";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,17 +19,11 @@ const EventDetailsPage = () => {
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
 
-  // if (!event) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // TODO: Fetch event using eventService method
   useEffect(() => {
-    fetch(`http://localhost:3000/events/${id}`)
-      .then((response) => response.json())
+    getEvent(id)
       .then((data) => {
+        console.log("Event fetched using get", data);
         setEvent(data);
-
         const newDate = new Date(data.date);
         setDate(newDate);
         setLoading(false);
@@ -171,8 +168,8 @@ const EventDetailsPage = () => {
           </li>
         </ul>
       </div>
-      {activeTab === "photos" && <div>Photos</div>}
-      {activeTab === "carpooling" && <div>Carpooling</div>}
+      {activeTab === "photos" && <Photos />}
+      {activeTab === "carpooling" && <Carpooling />}
       {activeTab === "activities" && <Activities />}
       {activeTab === "details" && <Details />}
       {activeTab === "reviews" && <Reviews />}

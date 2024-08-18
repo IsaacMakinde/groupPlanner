@@ -21,16 +21,22 @@ const EventList: React.FC = () => {
   const [Ascending, setAscending] = useState(true);
   const [sortCriteria, setSortCriteria] = useState("Date");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("use effect ran");
-    getEvents()
-      .then((data) => {
-        setEventsList(data);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const events = await getEvents();
+        setEventsList(events);
+      } catch (error) {
         console.log("Error fetching events", error);
-      });
+      } finally {
+        console.log("Events fetched", eventsList);
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleEventCreateButton = () => {
@@ -73,6 +79,7 @@ const EventList: React.FC = () => {
     try {
       const response = await updateEvent(eventObject);
       const updatedEvent = response.data;
+      console.log("Event updated", updatedEvent);
       setEventsList(
         eventsList.map((event) =>
           event.id === updatedEvent.id ? updatedEvent : event
@@ -97,14 +104,14 @@ const EventList: React.FC = () => {
     eventsList.sort((a, b) => {
       if (Ascending) {
         if (sortCriteria === "Host") {
-          return a.host.name.localeCompare(b.host.name);
+          return a.host.localeCompare(b.host);
         } else if (sortCriteria === "Category") {
           return a.category.localeCompare(b.category);
         }
         return a.date.localeCompare(b.date);
       } else {
         if (sortCriteria === "Host") {
-          return b.host.name.localeCompare(a.host.name);
+          return b.host.localeCompare(a.host);
         } else if (sortCriteria === "Category") {
           return b.category.localeCompare(a.category);
         }
@@ -138,6 +145,14 @@ const EventList: React.FC = () => {
     handleDeleteFormClose();
     console.log("event to delete from form:", eventId);
   };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!eventsList) {
+    return <p>No events available</p>;
+  }
 
   return (
     <section className="section is-capitalized">
