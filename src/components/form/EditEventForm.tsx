@@ -1,4 +1,5 @@
 import Event from "../../interfaces/EventInter";
+import { useClerk } from "@clerk/clerk-react";
 
 interface EditEventFormProps {
   event: Event;
@@ -15,6 +16,7 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
 }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 450;
+  const { user } = useClerk();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
     const newEvent = {
       id: event.id,
       title: payload.title.toString(),
-      host: payload.host.toString(),
+      host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),
       description: payload.description.toString(),
@@ -58,21 +60,6 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-tag"></i>
-                </span>
-              </div>
-            </div>
-
-            <div className="field">
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  name="host"
-                  type="text"
-                  placeholder="Host name"
-                  defaultValue={event?.host}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-id-badge"></i>
                 </span>
               </div>
             </div>

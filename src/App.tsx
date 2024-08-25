@@ -7,14 +7,7 @@ import "./App.css";
 import LoginForm from "./components/form/LoginForm";
 import Footer from "./components/ui/Footer";
 
-import { useUser } from "@clerk/clerk-react";
-
 function App() {
-  const { isSignedIn, user, isLoaded } = useUser();
-
-  if (isSignedIn && isLoaded) {
-    console.log("User is signed in:", user.id);
-  }
   return (
     <>
       <Router>

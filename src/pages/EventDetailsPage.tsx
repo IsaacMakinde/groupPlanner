@@ -10,6 +10,7 @@ import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
 import { getEvent } from "../services/EventService";
+import { useUser } from "@clerk/clerk-react";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ const EventDetailsPage = () => {
   const [error, setError] = useState(false);
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
+  const { user, isSignedIn, isLoaded } = useUser();
 
   useEffect(() => {
     getEvent(id)
@@ -35,6 +37,14 @@ const EventDetailsPage = () => {
       });
   }, [id]);
 
+  const addToInterested = () => {
+    console.log("Add to interested of this event");
+  };
+
+  const declineInvite = () => {
+    console.log("Decline this event");
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const options: DateTimeFormatOptions = {
@@ -46,6 +56,7 @@ const EventDetailsPage = () => {
 
     return date.toLocaleDateString("en-US", options);
   };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -58,20 +69,36 @@ const EventDetailsPage = () => {
     return <p>Event not found</p>;
   }
 
+  if (!isLoaded) {
+    return <p>Loading user...</p>;
+  }
+
   return (
     <div className="container is-fullhd">
-      <CountdownTimer targetDate={date} eventTitle={event.title} />
+      <CountdownTimer
+        targetDate={date}
+        eventTitle={event.title}
+        userName={event.host}
+      />
       <div className="container has-text-black is-flex is-flex-direction-column">
         <div className="is-flex is-flex-direction-row is-justify-content-space-between">
           <h1 className="title has-text-black">{event.title}</h1>
-          <div className="is-flex is-flex-direction-row is-justify-content-space-between">
-            <button className="button is-rounded is-outlined is-primary is-dark mx-2">
-              Interested
-            </button>
-            <button className="button is-rounded is-primary is-dark mx-2">
-              Decline
-            </button>
-          </div>
+          {isSignedIn && !(user.fullName == event.host) && isLoaded && (
+            <div className="is-flex is-flex-direction-row is-justify-content-space-between">
+              <button
+                onClick={addToInterested}
+                className="button is-rounded is-outlined is-primary is-dark mx-2"
+              >
+                Interested
+              </button>
+              <button
+                onClick={declineInvite}
+                className="button is-rounded is-primary is-dark mx-2"
+              >
+                Decline
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="is-flex is-flex-direction-row is-justify-content-space-between mt-4">
@@ -97,7 +124,8 @@ const EventDetailsPage = () => {
           </div>
         </div>
         <div className="is-align-self-center"></div>
-        <GuestList />
+
+        <GuestList host={event.host} />
       </div>
       <div className="tabs is-centered is-medium mt-6 mb-6 is-dark is-boxed  ">
         <ul>

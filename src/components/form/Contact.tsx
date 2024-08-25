@@ -2,13 +2,14 @@ import React, { useState } from "react";
 
 const Contact: React.FC = () => {
   const [result, setResult] = useState<string>("");
+  const ACCESSKEY = import.meta.env.VITE_FORM_ACCESS_KEY;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Form Submitted Successfully");
     const formData = new FormData(event.currentTarget);
 
-    formData.append("access_key", "690241ff-ba2b-466d-97f6-98d53f7eb0fb");
+    formData.append("access_key", ACCESSKEY);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

@@ -1,6 +1,8 @@
 import React from "react";
+import { useUser } from "@clerk/clerk-react";
 
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
+  const { user } = useUser();
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 450;
 
@@ -10,7 +12,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
-      host: payload.host.toString(),
+      host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),
       description: payload.description.toString(),
@@ -35,7 +37,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
         </header>
         <form onSubmit={handleSubmit}>
           <section className="modal-card-body">
-            {/* <!-- Content ... --> */}
             <div className="field">
               <div className="control has-icons-left">
                 <input
@@ -50,20 +51,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-tag"></i>
-                </span>
-              </div>
-            </div>
-
-            <div className="field">
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  name="host"
-                  type="text"
-                  placeholder="Host name"
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-id-badge"></i>
                 </span>
               </div>
             </div>

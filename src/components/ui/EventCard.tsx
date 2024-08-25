@@ -8,6 +8,7 @@ interface EventCardProps {
   eventObject: Event;
   onDeleteEvent: (eventId: string) => void;
   onEditEvent: (eventId: string) => void;
+  userName: string;
 }
 
 const formatDate = (dateString: string) => {
@@ -24,24 +25,36 @@ const EventCard: FC<EventCardProps> = ({
   eventObject,
   onDeleteEvent,
   onEditEvent,
+  userName,
 }) => {
+  console.log(userName, "username");
+  const canEdit: boolean = userName === eventObject.host;
+  const canDelete: boolean = userName === eventObject.host;
+
   return (
     <div className="event-card is-mobile">
       <div className="event-card-cta">
         <div className="event-user-cta">
-          <button
-            className="button is-medium is-primary"
-            onClick={() => onEditEvent(eventObject.id)}
-          >
-            Edit
-          </button>
-          <button
-            className="button is-medium is-danger"
-            onClick={() => onDeleteEvent(eventObject.id)}
-          >
-            Delete
-          </button>
+          {canEdit && (
+            <button
+              aria-label="Edit Event ${eventObject.title}"
+              className="button is-medium is-primary"
+              onClick={() => onEditEvent(eventObject.id)}
+            >
+              Edit
+            </button>
+          )}
+          {canDelete && (
+            <button
+              aria-label="Delete Event ${eventObject.title}"
+              className="button is-medium is-danger"
+              onClick={() => onDeleteEvent(eventObject.id)}
+            >
+              Delete
+            </button>
+          )}
         </div>
+
         <div className="event-info">
           <p className="is-size-4 has-text-info">{eventObject.venue}</p>
           <p className="is-size-6 has-text-info">
@@ -75,7 +88,12 @@ const EventCard: FC<EventCardProps> = ({
         </div>
       </div>
 
-      <img className="image is-128x128" src={unsplash001} alt="unsplash001" />
+      <img
+        className="image is-128x128"
+        src={unsplash001}
+        alt="Event Image"
+        loading="lazy"
+      />
     </div>
   );
 };
