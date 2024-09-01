@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Event from "../interfaces/EventInter";
 import { DateTimeFormatOptions } from "intl";
 import CountdownTimer from "../components/ui/CountdownTimer";
 import GuestList from "../components/ui/GuestList";
@@ -9,33 +8,28 @@ import Activities from "../components/ui/Activities";
 import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
-import { getEvent } from "../services/EventService";
 import { useUser } from "@clerk/clerk-react";
+import { useEvent } from "../contexts/EventContext";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
-  const [event, setEvent] = useState<Event>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { event, fetchEvent, loading, error } = useEvent();
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
   const { user, isSignedIn, isLoaded } = useUser();
 
   useEffect(() => {
-    getEvent(id)
-      .then((data) => {
-        console.log("Event fetched using get", data);
-        setEvent(data);
-        const newDate = new Date(data.date);
-        setDate(newDate);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching product:", error);
-        setLoading(false);
-        setError(true);
-      });
-  }, [id]);
+    fetchEvent(id);
+    console.log("Fetching event with id:", id);
+  }, [id, fetchEvent]);
+
+  useEffect(() => {
+    if (event) {
+      setDate(new Date(event.date));
+      console.log("Event date:", event.date);
+      console.log("Event", event);
+    }
+  }, [event]);
 
   const addToInterested = () => {
     console.log("Add to interested of this event");

@@ -12,10 +12,10 @@ interface Event {
   host: string;
   date: string;
   venue: string;
+  placeId: string;
   description?: string;
   category?: string;
   pricing: number;
   guests: string;
 }
-
 export default Event;
