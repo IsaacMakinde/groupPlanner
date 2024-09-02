@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CountdownTimer = ({ targetDate, eventTitle }) => {
+const CountdownTimer = ({ targetDate, eventTitle, userName }) => {
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 0,
@@ -39,7 +39,7 @@ const CountdownTimer = ({ targetDate, eventTitle }) => {
 
   return (
     <div className="container is-fullhd">
-      <section className="hero event-banner is-medium is-fullwidth mb-6">
+      <section className="hero event-banner is-medium is-fullwidth mb-6 has-text-white">
         <div className="hero-body countdown-div">
           <div className="container has-text-centered ">
             <div className="title">
@@ -80,7 +80,7 @@ const CountdownTimer = ({ targetDate, eventTitle }) => {
                   </div>
                 </div>
                 <div className="is-flex is-flex-direction-column is-align-items-center">
-                  <h3 className="title is-4">Hosted By: Isaac</h3>
+                  <h3 className="title is-4">Hosted By: {userName}</h3>
                   <figure className="image is-128x128">
                     <img
                       className="is-rounded"

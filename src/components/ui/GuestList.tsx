@@ -1,4 +1,11 @@
-const GuestList = () => {
+import { useUser } from "@clerk/clerk-react";
+const GuestList = ({ host }) => {
+  const { user, isLoaded, isSignedIn } = useUser();
+
+  if (!isLoaded) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="container subtitle has-text-primary mt-4 card">
       <div className="card ">
@@ -17,7 +24,9 @@ const GuestList = () => {
               <div className="grid guest-list">
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -35,15 +44,19 @@ const GuestList = () => {
                       </div>
                     </div>
                     <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
+                      {isSignedIn && user.fullName == host && (
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -60,16 +73,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <footer className="card-footer">
-                      <button className="card-footer-item has-text-primary">
-                        Cancel
-                      </button>
-                    </footer>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Cancel
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -89,7 +106,9 @@ const GuestList = () => {
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -111,7 +130,9 @@ const GuestList = () => {
 
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -128,16 +149,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -154,16 +179,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -180,16 +209,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -206,16 +239,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -232,16 +269,20 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="cell">
                   <div className="card guest-card check">
-                    <button className="delete is-medium"></button>
+                    {isSignedIn && user.fullName == host && (
+                      <button className="delete is-medium"></button>
+                    )}
                     <div className="card-image">
                       <figure className="image is-128x128">
                         <img
@@ -258,45 +299,52 @@ const GuestList = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="card-footer hover">
-                      <button className="card-footer-item has-text-primary">
-                        Approve
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="cell">
-                  <div className="card guest-card check">
-                    <div></div>
-                    <div className="card-image">
-                      <button className="button is-rounded is-large is-primary is-rounded is-outlined is-dark mx-2">
-                        Add
-                      </button>
-                    </div>
-                    <div className="card-content">
-                      <div className="content">
-                        <p className="title is-4 has-text-info">
-                          Invite Friend
-                        </p>
+                    {isSignedIn && user.fullName == host && (
+                      <div className="card-footer hover">
+                        <button className="card-footer-item has-text-primary">
+                          Approve
+                        </button>
                       </div>
-                    </div>
-
-                    <div className="card-footer"></div>
+                    )}
                   </div>
                 </div>
+                {isSignedIn && user.fullName == host && (
+                  <div className="cell">
+                    <div className="card guest-card check">
+                      <div></div>
+                      <div className="card-image">
+                        <button className="button is-rounded is-large is-primary is-rounded is-outlined is-dark mx-2">
+                          Add
+                        </button>
+                      </div>
+                      <div className="card-content">
+                        <div className="content">
+                          <p className="title is-4 has-text-info">
+                            Invite Friend
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="card-footer"></div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
 
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
-            Save
-          </a>
-          <a href="#" className="card-footer-item">
-            Edit
-          </a>
+          {isSignedIn && user.fullName == host && (
+            <>
+              <a href="#" className="card-footer-item">
+                Save
+              </a>
+              <a href="#" className="card-footer-item">
+                Edit
+              </a>
+            </>
+          )}
         </footer>
       </div>
     </div>

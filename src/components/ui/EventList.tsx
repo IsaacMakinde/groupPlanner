@@ -10,6 +10,7 @@ import {
 } from "../../services/EventService";
 import { useEffect, useState } from "react";
 import EventCard from "./EventCard";
+import { useUser } from "@clerk/clerk-react";
 
 const EventList: React.FC = () => {
   const [showDeleteForm, setShowDeleteForm] = useState(false);
@@ -22,6 +23,8 @@ const EventList: React.FC = () => {
   const [sortCriteria, setSortCriteria] = useState("Date");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { isSignedIn, user, isLoaded } = useUser();
+  const [username, setUsername] = useState("Guest");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +40,12 @@ const EventList: React.FC = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (isSignedIn && isLoaded) {
+      setUsername(user.fullName);
+    }
+  }, [isSignedIn, isLoaded, user]);
 
   const handleEventCreateButton = () => {
     setShowCreateForm((showCreateForm) => !showCreateForm);
@@ -55,6 +64,10 @@ const EventList: React.FC = () => {
       console.log("Error adding event", error);
     }
   };
+
+  if (isSignedIn && isLoaded) {
+    console.log("User is signed in", user);
+  }
 
   const handleEditFormOpen = (eventId: string) => {
     const event = eventsList.find((event) => event.id === eventId);
@@ -219,19 +232,21 @@ const EventList: React.FC = () => {
               eventObject={event}
               onDeleteEvent={handleDeleteFormOpen}
               onEditEvent={handleEditFormOpen}
+              userName={username}
             />
           ))
         )}
       </div>
-
-      <button
-        id="createEventButton"
-        className="add-event-button button is-link is-medium is-rounded"
-        aria-label="createEventButton"
-        onClick={handleEventCreateButton}
-      >
-        Add Event
-      </button>
+      {isSignedIn && (
+        <button
+          id="createEventButton"
+          className="add-event-button button is-link is-medium is-rounded"
+          aria-label="createEventButton"
+          onClick={handleEventCreateButton}
+        >
+          Add Event
+        </button>
+      )}
 
       {showCreateForm && (
         <EventForm

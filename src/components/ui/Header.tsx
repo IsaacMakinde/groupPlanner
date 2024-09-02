@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo-removebg-preview.png";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 
 const Header = () => {
   return (
@@ -19,9 +25,12 @@ const Header = () => {
           <Link to={"/events"}>Events</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/login"}>
-            <button className="btn button is-link is-size-6">Login</button>
-          </Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
         </li>
       </ul>
     </nav>

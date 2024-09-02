@@ -1,18 +1,23 @@
 import React from "react";
+import { useUser } from "@clerk/clerk-react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
+  const { user } = useUser();
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 450;
-
+  const [placeID, setPlaceID] = useState("");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
-      host: payload.host.toString(),
+      host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),
+      place_id: placeID,
       description: payload.description.toString(),
       category: payload.category.toString(),
       pricing: parseFloat(payload.pricing.toString()),
@@ -26,6 +31,39 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
     onClose();
   };
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places`;
+    script.async = true;
+    document.body.appendChild(script);
+    script.onload = () => {
+      const venueInput = document.getElementById(
+        "venue_input"
+      ) as HTMLInputElement;
+      const venueAutocomplete = new google.maps.places.Autocomplete(
+        venueInput,
+        {
+          fields: ["place_id", "formatted_address", "geometry", "name"],
+          types: ["establishment", "geocode"],
+          componentRestrictions: { country: "ie" },
+        }
+      );
+
+      venueAutocomplete.addListener("place_changed", () => {
+        const place = venueAutocomplete.getPlace();
+        const place_id = place.place_id;
+        setPlaceID(place_id);
+        console.log("Venue ID:", place_id);
+
+        console.log("Place:", place);
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className={`modal ${showForm ? "is-active is-clipped" : ""}`}>
       <div className="modal-background"></div>
@@ -35,7 +73,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
         </header>
         <form onSubmit={handleSubmit}>
           <section className="modal-card-body">
-            {/* <!-- Content ... --> */}
             <div className="field">
               <div className="control has-icons-left">
                 <input
@@ -50,20 +87,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-tag"></i>
-                </span>
-              </div>
-            </div>
-
-            <div className="field">
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  name="host"
-                  type="text"
-                  placeholder="Host name"
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-id-badge"></i>
                 </span>
               </div>
             </div>
@@ -100,6 +123,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
             <div className="field">
               <div className="control has-icons-left">
                 <input
+                  id="venue_input"
                   className="input"
                   name="venue"
                   type="text"
