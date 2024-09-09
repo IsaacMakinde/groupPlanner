@@ -7,16 +7,6 @@ const LoginForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // if (!isSigningIn) {
-    //   setIsSigningIn(true);
-    //   const formData = new FormData(e.target);
-    //   const payload = Object.fromEntries(formData);
-    //   const email = payload.email.toString();
-    //   const password = payload.password.toString();
-
-    //   setIsSigningIn(true);
-    // }
   };
 
   return (

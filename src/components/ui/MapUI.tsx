@@ -30,7 +30,6 @@ const MapUI = () => {
         </AdvancedMarker>
       </div>
       {event && <p>{position.lat & position.lng}</p>}
-      <p>{event.venue}</p>
     </APIProvider>
   );
 };

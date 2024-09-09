@@ -27,7 +27,6 @@ const EventCard: FC<EventCardProps> = ({
   onEditEvent,
   userName,
 }) => {
-  console.log(userName, "username");
   const canEdit: boolean = userName === eventObject.host;
   const canDelete: boolean = userName === eventObject.host;
 

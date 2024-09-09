@@ -1,15 +1,13 @@
 import axios from "axios";
 import { API } from "./apiConfig";
+import Event from "../interfaces/EventInter";
 
 if (!API) {
-  console.log(API);
   throw new Error("API URL not found");
 }
-// Fetch events
 export const getEvents = async () => {
   try {
     const response = await axios.get(`${API}/events`);
-    console.log("Events get  fetched", response.data);
     return response.data;
   } catch (error) {
     console.log("Error fetching events", error);
@@ -18,7 +16,7 @@ export const getEvents = async () => {
   }
 };
 
-export const getEvent = async (id) => {
+export const getEvent = async (id: string) => {
   try {
     const response = await axios.get(`${API}/events/${id}`);
     return response.data;
@@ -28,8 +26,7 @@ export const getEvent = async (id) => {
   }
 };
 
-// Create an event
-export const createEvent = async (event) => {
+export const createEvent = async (event: Event) => {
   try {
     const response = await axios.post(`${API}/events`, event);
     return response;
@@ -39,8 +36,7 @@ export const createEvent = async (event) => {
   }
 };
 
-//  Edit an event
-export const updateEvent = async (event) => {
+export const updateEvent = async (event: Event) => {
   try {
     const toSend = {
       title: event.title,
@@ -51,10 +47,7 @@ export const updateEvent = async (event) => {
       pricing: event.pricing,
     };
 
-    console.log("toSend", toSend);
-
     const response = await axios.put(`${API}/events/${event.id}`, toSend);
-    console.log("Event updated", event);
     return response;
   } catch (error) {
     console.log("Error editing event", error);
@@ -62,8 +55,7 @@ export const updateEvent = async (event) => {
   }
 };
 
-// Delete an event
-export const deleteEvent = async (id) => {
+export const deleteEvent = async (id: string) => {
   try {
     const response = await axios.delete(`${API}/events/${id}`);
     return response;

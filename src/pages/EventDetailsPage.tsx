@@ -20,14 +20,11 @@ const EventDetailsPage = () => {
 
   useEffect(() => {
     fetchEvent(id);
-    console.log("Fetching event with id:", id);
   }, [id, fetchEvent]);
 
   useEffect(() => {
     if (event) {
       setDate(new Date(event.date));
-      console.log("Event date:", event.date);
-      console.log("Event", event);
     }
   }, [event]);
 

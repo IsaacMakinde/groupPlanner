@@ -53,9 +53,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
         const place = venueAutocomplete.getPlace();
         const place_id = place.place_id;
         setPlaceID(place_id);
-        console.log("Venue ID:", place_id);
-
-        console.log("Place:", place);
       });
     };
 
