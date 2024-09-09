@@ -5,6 +5,7 @@ import Event from "../interfaces/EventInter";
 if (!API) {
   throw new Error("API URL not found");
 }
+
 export const getEvents = async () => {
   try {
     const response = await axios.get(`${API}/events`);

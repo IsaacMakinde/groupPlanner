@@ -20,11 +20,11 @@ const Details = () => {
       </div>
 
       <div className="content">
-        <div className="is-flex is-justify-content-space-between my-6">
+        <div className="is-flex is-flex-direction-column is-align-items-center is-gap-4 is-justify-content-space-between my-6">
           <h2 className="title is-4 has-text-black">Location: {event.venue}</h2>
-          <button className="button is-info">Get Directions</button>
+          <MapUI />
+          <button className="button is-info">Open In Maps</button>
         </div>
-        <MapUI />
       </div>
     </div>
   );
