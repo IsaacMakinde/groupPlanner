@@ -21,7 +21,6 @@ const EventList: React.FC = () => {
   const [eventToEdit, setEventToEdit] = useState<Event>(null);
   const [Ascending, setAscending] = useState(true);
   const [sortCriteria, setSortCriteria] = useState("Date");
-  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
   const [username, setUsername] = useState("Guest");
@@ -118,10 +117,6 @@ const EventList: React.FC = () => {
     });
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
   const handleDeleteFormOpen = (eventId: string) => {
     setShowDeleteForm(true);
     setEventToDelete(eventsList.find((event) => event.id === eventId));
@@ -179,21 +174,6 @@ const EventList: React.FC = () => {
                 <option>Descending</option>
               </select>
             </div>
-          </div>
-        </div>
-
-        <div className="field column">
-          <label className="label has-text-primary">Find Event</label>
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={(e) => handleSearch(e)}
-              className="input is-info"
-              type="text"
-              placeholder="Search for events"
-            ></input>
-            <span className="icon is-small is-left">
-              <i className="fa fa-search"></i>
-            </span>
           </div>
         </div>
       </div>

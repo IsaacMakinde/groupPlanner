@@ -1,5 +1,5 @@
 import MapUI from "./MapUI";
-import { useEvent } from "../../contexts/EventContext";
+import { useEvent } from "../../contexts/Events/useEvent";
 
 const Details = () => {
   const { event, loading, error } = useEvent();

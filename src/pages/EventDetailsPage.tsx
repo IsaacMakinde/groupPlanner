@@ -9,7 +9,7 @@ import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
 import { useUser } from "@clerk/clerk-react";
-import { useEvent } from "../contexts/EventContext";
+import { useEvent } from "../contexts/Events/useEvent";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

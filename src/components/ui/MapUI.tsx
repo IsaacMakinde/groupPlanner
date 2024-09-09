@@ -5,7 +5,7 @@ import {
   Pin,
 } from "@vis.gl/react-google-maps";
 import { useState } from "react";
-import { useEvent } from "../../contexts/EventContext";
+import { useEvent } from "../../contexts/Events/useEvent";
 
 const MapUI = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
