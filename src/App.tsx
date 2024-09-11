@@ -6,7 +6,7 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import "./App.css";
 import LoginForm from "./components/form/LoginForm";
 import Footer from "./components/ui/Footer";
-import { EventProvider } from "./contexts/EventContext";
+import { EventProvider } from "./contexts/Events/EventProvider";
 
 function App() {
   return (

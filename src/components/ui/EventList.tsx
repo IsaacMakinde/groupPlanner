@@ -21,7 +21,6 @@ const EventList: React.FC = () => {
   const [eventToEdit, setEventToEdit] = useState<Event>(null);
   const [Ascending, setAscending] = useState(true);
   const [sortCriteria, setSortCriteria] = useState("Date");
-  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
   const [username, setUsername] = useState("Guest");
@@ -49,7 +48,6 @@ const EventList: React.FC = () => {
 
   const handleEventCreateButton = () => {
     setShowCreateForm((showCreateForm) => !showCreateForm);
-    console.log("Create Event!");
   };
 
   const handleAddEvent = async (event: Event) => {
@@ -57,17 +55,11 @@ const EventList: React.FC = () => {
       const response = await createEvent(event);
       const newEvent = response.data;
       setEventsList([...eventsList, newEvent]);
-      console.log("Event added", event);
-      console.log(eventsList);
       setShowCreateForm(false);
     } catch (error) {
       console.log("Error adding event", error);
     }
   };
-
-  if (isSignedIn && isLoaded) {
-    console.log("User is signed in", user);
-  }
 
   const handleEditFormOpen = (eventId: string) => {
     const event = eventsList.find((event) => event.id === eventId);
@@ -75,8 +67,6 @@ const EventList: React.FC = () => {
       setEventToEdit(event);
       setShowEditForm(true);
     }
-
-    console.log("event to edit:", eventToEdit);
   };
 
   const handleEditFormClose = () => {
@@ -84,29 +74,24 @@ const EventList: React.FC = () => {
   };
 
   const setSort = (e) => {
-    console.log(e.target.value);
     setSortCriteria(e.target.value);
   };
   const editEventFormAction = async (eventObject) => {
     try {
       const response = await updateEvent(eventObject);
       const updatedEvent = response.data;
-      console.log("Event updated", updatedEvent);
       setEventsList(
         eventsList.map((event) =>
           event.id === updatedEvent.id ? updatedEvent : event
         )
       );
       handleEditFormClose();
-      console.log("event to edit from form:", eventObject);
     } catch (error) {
       console.log("Error editing event", error);
     }
   };
 
   const setOrder = (e) => {
-    console.log(e.target.value);
-
     if (e.target.value === "Ascending") {
       setAscending(true);
     } else {
@@ -132,15 +117,9 @@ const EventList: React.FC = () => {
     });
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    console.log(searchQuery);
-  };
-
   const handleDeleteFormOpen = (eventId: string) => {
     setShowDeleteForm(true);
     setEventToDelete(eventsList.find((event) => event.id === eventId));
-    console.log("event to delete:", eventToDelete);
   };
 
   const handleDeleteFormClose = () => {
@@ -155,7 +134,6 @@ const EventList: React.FC = () => {
         console.log("Error deleting event", error);
       });
     handleDeleteFormClose();
-    console.log("event to delete from form:", eventId);
   };
 
   if (isLoading) {
@@ -196,28 +174,6 @@ const EventList: React.FC = () => {
                 <option>Descending</option>
               </select>
             </div>
-          </div>
-        </div>
-
-        <div className="field column">
-          <label className="label has-text-primary">Find Event</label>
-          <div className="control has-icons-left has-icons-right">
-            <input
-              onChange={(e) => handleSearch(e)}
-              onKeyDown={(e) => {
-                {
-                  if (e.key === "Enter") {
-                    console.log(e.key);
-                  }
-                }
-              }}
-              className="input is-info"
-              type="text"
-              placeholder="Search for events"
-            ></input>
-            <span className="icon is-small is-left">
-              <i className="fa fa-search"></i>
-            </span>
           </div>
         </div>
       </div>

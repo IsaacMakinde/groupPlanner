@@ -1,7 +1,6 @@
-import { createContext, useState, useContext, useCallback } from "react";
-import { getEvent } from "../services/EventService";
-
-const EventContext = createContext(null);
+import { useState, useCallback } from "react";
+import { EventContext } from "./eventContext";
+import { getEvent } from "../../services/EventService";
 
 export const EventProvider = ({ children }) => {
   const [event, setEvent] = useState(null);
@@ -26,12 +25,4 @@ export const EventProvider = ({ children }) => {
       {children}
     </EventContext.Provider>
   );
-};
-
-export const useEvent = () => {
-  const context = useContext(EventContext);
-  if (!context) {
-    throw new Error("useEvent must be used within an EventProvider");
-  }
-  return context;
 };

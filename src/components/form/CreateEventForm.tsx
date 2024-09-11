@@ -6,11 +6,27 @@ import { useState } from "react";
 const EventForm = ({ showForm, onClose, onAddEvent }) => {
   const { user } = useUser();
   const defaultDate = new Date().toISOString().split("T")[0];
-  const maxLength = 450;
+  const maxLength = 2000;
   const [placeID, setPlaceID] = useState("");
+  const [guestListError, setGuestListError] = useState("");
+  const guestListRegex =
+    /^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*(?:,\s*[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*)*$/;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const guestList = formData.get("guestList").toString().trim();
+
+    if (!guestListRegex.test(guestList)) {
+      setGuestListError(
+        "Please enter guests' names separated by commas (e.g. John Doe, Jane Doe)."
+      );
+      console.log("Invalid guest list");
+      return; // Exit early if guest list is invalid
+    } else {
+      setGuestListError(""); // Clear error message
+    }
+
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
@@ -53,9 +69,6 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
         const place = venueAutocomplete.getPlace();
         const place_id = place.place_id;
         setPlaceID(place_id);
-        console.log("Venue ID:", place_id);
-
-        console.log("Place:", place);
       });
     };
 
@@ -93,14 +106,18 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
             <div className="field">
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className={`input ${guestListError ? "is-danger" : ""}`}
                   name="guestList"
                   type="text"
-                  placeholder="Guests"
+                  placeholder="Guests (e.g., John Doe, Jane Doe)"
+                  required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-users"></i>
                 </span>
+                {guestListError && (
+                  <p className="help is-danger">{guestListError}</p>
+                )}
               </div>
             </div>
 

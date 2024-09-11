@@ -9,7 +9,7 @@ import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
 import { useUser } from "@clerk/clerk-react";
-import { useEvent } from "../contexts/EventContext";
+import { useEvent } from "../contexts/Events/useEvent";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,14 +20,11 @@ const EventDetailsPage = () => {
 
   useEffect(() => {
     fetchEvent(id);
-    console.log("Fetching event with id:", id);
   }, [id, fetchEvent]);
 
   useEffect(() => {
     if (event) {
       setDate(new Date(event.date));
-      console.log("Event date:", event.date);
-      console.log("Event", event);
     }
   }, [event]);
 
