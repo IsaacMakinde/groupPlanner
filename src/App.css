@@ -5,7 +5,7 @@
 
 .event-card:hover {
   transform: scale(0.92);
-  box-shadow: 0 0 10px #fa7c91;
+  box-shadow: 0 0 10px #051319;
 }
 
 .photos-image-card {
@@ -73,12 +73,16 @@
 
 .hero-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 50vh;
-  background: url("../src/assets/img/unsplash-002.jpg") no-repeat center
+  background: url("../src/assets/img/dublin-liffey.jpg") no-repeat center
     center/cover;
   position: relative;
+  width: 96vw;
+  min-width: 80vw;
+  align-self: center;
+  border-radius: 20px;
 }
 
 .guest-card {
@@ -133,6 +137,7 @@
 .list-controls {
   margin: 0 20px;
   margin-top: 40px;
+  border-bottom: 2px solid grey;
 }
 
 .event-banner {
@@ -228,9 +233,10 @@
   flex-direction: column;
   gap: 1rem;
   text-align: left;
-  font-size: 1rem;
+  font-size: 0.5rem;
   padding: 0.5rem;
   justify-self: flex-end;
+  max-width: 30vw;
   flex-shrink: 1;
 }
 

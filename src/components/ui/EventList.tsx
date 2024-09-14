@@ -41,10 +41,10 @@ const EventList: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isSignedIn && isLoaded) {
+    if (isSignedIn && isLoaded && user?.fullName !== username) {
       setUsername(user.fullName);
     }
-  }, [isSignedIn, isLoaded, user]);
+  }, [isSignedIn, isLoaded, user?.fullName, username]);
 
   const handleEventCreateButton = () => {
     setShowCreateForm((showCreateForm) => !showCreateForm);
@@ -81,7 +81,7 @@ const EventList: React.FC = () => {
       const response = await updateEvent(eventObject);
       const updatedEvent = response.data;
       setEventsList(
-        eventsList.map((event) =>
+        eventsList.map((event: Event) =>
           event.id === updatedEvent.id ? updatedEvent : event
         )
       );
@@ -146,15 +146,15 @@ const EventList: React.FC = () => {
 
   return (
     <section className="section is-capitalized">
-      <div className="columns  is-variable is-2  list-controls">
+      <div className="columns is-variable is-2 list-controls is-uppercase">
         <div className="column is-7">
-          <h2 className="is-title is-size-4 has-text-primary">
+          <h2 className="is-title is-size-3 is-uppercase has-text-black has-text-weight-bold">
             Upcoming events
           </h2>
         </div>
 
         <div className="field column">
-          <label className="label has-text-primary">Sort by</label>
+          <label className="label has-text-black">Sort by</label>
           <div className="control">
             <div className="select">
               <select onChange={setSort}>
@@ -166,7 +166,7 @@ const EventList: React.FC = () => {
           </div>
         </div>
         <div className="field column">
-          <label className="label has-text-primary">Order by</label>
+          <label className="label has-text-black">Order by</label>
           <div className="control">
             <div className="select">
               <select onChange={setOrder}>
@@ -196,7 +196,7 @@ const EventList: React.FC = () => {
       {isSignedIn && (
         <button
           id="createEventButton"
-          className="add-event-button button is-link is-medium is-rounded"
+          className="add-event-button button is-link is-medium"
           aria-label="createEventButton"
           onClick={handleEventCreateButton}
         >

@@ -37,7 +37,7 @@ const EventCard: FC<EventCardProps> = ({
           {canEdit && (
             <button
               aria-label="Edit Event ${eventObject.title}"
-              className="button is-medium is-primary"
+              className="button is-medium is-outlined is-black"
               onClick={() => onEditEvent(eventObject.id)}
             >
               Edit
@@ -46,7 +46,7 @@ const EventCard: FC<EventCardProps> = ({
           {canDelete && (
             <button
               aria-label="Delete Event ${eventObject.title}"
-              className="button is-medium is-danger"
+              className="button is-medium is-black"
               onClick={() => onDeleteEvent(eventObject.id)}
             >
               Delete
@@ -55,8 +55,8 @@ const EventCard: FC<EventCardProps> = ({
         </div>
 
         <div className="event-info">
-          <p className="is-size-4 has-text-info">{eventObject.venue}</p>
-          <p className="is-size-6 has-text-info">
+          <p className="is-size-4 has-text-black">{eventObject.venue}</p>
+          <p className="is-size-6 has-text-black">
             <i className="fas fa-euro-sign"></i>
             {eventObject.pricing.toPrecision(4)}
           </p>
@@ -64,7 +64,7 @@ const EventCard: FC<EventCardProps> = ({
       </div>
 
       <div className="event-card-content">
-        <p className="is-size-6 has-text-danger event-card-date ">
+        <p className="is-size-6 has-text-black event-card-date ">
           {formatDate(eventObject.date)}
         </p>
         <p className="event-card-title">{eventObject.title}</p>
@@ -74,15 +74,13 @@ const EventCard: FC<EventCardProps> = ({
 
         <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
           <p className="is-size-6 has-text-grey column">
-            <span className="tag is-medium is-info is-hovered">
+            <span className="tag is-medium is-info is-hovered has-text-white">
               {eventObject.category}
             </span>
           </p>
 
           <Link to={`/events/${eventObject.id}`}>
-            <button className="button is-medium is-primary">
-              View Details
-            </button>{" "}
+            <button className="button is-medium is-link">View Details</button>{" "}
           </Link>
         </div>
       </div>

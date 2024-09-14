@@ -73,7 +73,6 @@ const EventDetailsPage = () => {
       />
       <div className="container has-text-black is-flex is-flex-direction-column">
         <div className="is-flex is-flex-direction-row is-justify-content-space-between">
-          <h1 className="title has-text-black">{event.title}</h1>
           {isSignedIn && !(user.fullName == event.host) && isLoaded && (
             <div className="is-flex is-flex-direction-row is-justify-content-space-between">
               <button
@@ -92,18 +91,20 @@ const EventDetailsPage = () => {
           )}
         </div>
 
-        <div className="is-flex is-flex-direction-row is-justify-content-space-between mt-4">
+        <div className="is-flex is-flex-direction-row is-justify-content-space-between mt-4 has-text-white">
           <div className="tags has-addons are-medium">
             <span className="tag is-info">
               <i className="fa fa-calendar"></i>
             </span>
-            <span className="tag">{formatDate(event.date)}</span>
+            <span className="tag has-text-white">{formatDate(event.date)}</span>
           </div>
           <div className="tags has-addons are-medium">
             <span className="tag is-success">
               <i className="fa fa-euro-sign"></i>
             </span>
-            <span className="tag">{event.pricing.toFixed(2)}</span>
+            <span className="tag has-text-white">
+              {event.pricing.toFixed(2)}
+            </span>
           </div>
         </div>
         <div className="is-flex is-flex-direction-row is-justify-content-space-between">
@@ -111,14 +112,14 @@ const EventDetailsPage = () => {
             <span className="tag is-info">
               <i className="fa fa-map-marker"></i>
             </span>
-            <span className="tag">{event.venue}</span>
+            <span className="tag has-text-white">{event.venue}</span>
           </div>
         </div>
         <div className="is-align-self-center"></div>
 
         <GuestList host={event.host} />
       </div>
-      <div className="tabs is-centered is-medium mt-6 mb-6 is-dark is-boxed  ">
+      <div className="tabs is-centered is-medium mt-6 mb-6 is-dark is-boxed ">
         <ul>
           <li
             onClick={() => {

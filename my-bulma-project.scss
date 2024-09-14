@@ -1,18 +1,23 @@
 // Set your brand colors
 $purple: hsl(320, 28%, 42%);
+$blue: hsl(228, 42%, 30%);
 $pink: hsl(350, 93%, 73%);
+$link-blue: hsl(233, 100%, 63%);
+$light-blue: hsl(192, 95%, 74%);
 $brown: hsl(66, 9%, 43%);
 $beige-light: hsl(75, 4%, 81%);
 $beige-lighter: hsl(72, 14%, 93%);
+$black: hsl(214, 14%, 10%);
 
 // Path to Bulma's sass folder
 @use "bulma/sass" with (
   $family-primary: '"Nunito", sans-serif',
   $grey-dark: $brown,
   $grey-light: $beige-light,
-  $primary: $purple,
-  $link: $pink,
+  $primary: $light-blue,
+  $link: $link-blue,
   $control-border-width: 2px,
+  $text: $black,
   $input-shadow: none
 );
 
