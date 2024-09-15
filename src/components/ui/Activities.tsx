@@ -1,12 +1,9 @@
 const Activities = () => {
   return (
-    <div>
-      <h1>Activities</h1>
-      <ul className="is-flex is-flex-direction-column is-justify-content-space-between">
-        <p>Activity 1</p>
-        <p>Activity 2</p>
-        <p>Activity 3</p>
-      </ul>
+    <div className="container">
+      <h1 className="title is-3 has-text-black">
+        Activities {"(coming soon) "}
+      </h1>
     </div>
   );
 };

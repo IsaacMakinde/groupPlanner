@@ -23,7 +23,6 @@ const Details = () => {
         <div className="is-flex is-flex-direction-column is-align-items-center is-gap-4 is-justify-content-space-between my-6">
           <h2 className="title is-4 has-text-black">Location: {event.venue}</h2>
           <MapUI />
-          <button className="button is-link">Open In Maps</button>
         </div>
       </div>
     </div>

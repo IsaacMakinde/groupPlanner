@@ -8,7 +8,7 @@ import {
   deleteEvent,
   updateEvent,
 } from "../../services/EventService";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import EventCard from "./EventCard";
 import { useUser } from "@clerk/clerk-react";
 
@@ -24,6 +24,7 @@ const EventList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
   const [username, setUsername] = useState("Guest");
+  const eventCount = useMemo(() => eventsList.length, [eventsList]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -149,7 +150,7 @@ const EventList: React.FC = () => {
       <div className="columns is-variable is-2 list-controls is-uppercase">
         <div className="column is-7">
           <h2 className="is-title is-size-3 is-uppercase has-text-black has-text-weight-bold">
-            Upcoming events
+            ({eventCount}) Upcoming events
           </h2>
         </div>
 

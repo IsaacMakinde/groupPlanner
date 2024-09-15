@@ -13,7 +13,7 @@ const Reviews = () => {
         <div className="media-content">
           <div className="content">
             <p>
-              <strong className="has-text-info">Barbara Middleton</strong>
+              <strong className="has-text-black">Barbara Middleton</strong>
               <br />
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
               porta eros lacus, nec ultricies elit blandit non. Suspendisse
@@ -38,7 +38,7 @@ const Reviews = () => {
             <div className="media-content">
               <div className="content">
                 <p>
-                  <strong className="has-text-info">Sean Brown</strong>
+                  <strong className="has-text-black">Sean Brown</strong>
                   <br />
                   Donec sollicitudin urna eget eros malesuada sagittis.
                   Pellentesque habitant morbi tristique senectus et netus et
@@ -76,7 +76,7 @@ const Reviews = () => {
             <div className="media-content">
               <div className="content">
                 <p>
-                  <strong className="has-text-info">Kayli Eunice </strong>
+                  <strong className="has-text-black">Kayli Eunice </strong>
                   <br />
                   Sed convallis scelerisque mauris, non pulvinar nunc mattis
                   vel. Maecenas varius felis sit amet magna vestibulum euismod
