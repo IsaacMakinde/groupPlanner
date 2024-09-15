@@ -113,7 +113,7 @@ const Reviews = () => {
           </div>
           <div className="field">
             <p className="control">
-              <button className="button is-primary">Post comment</button>
+              <button className="button is-link">Post comment</button>
             </p>
           </div>
         </div>

@@ -195,9 +195,9 @@ const EventDetailsPage = () => {
       {activeTab === "reviews" && <Reviews />}
 
       <div className="container buttons is-flex is-justify-content-center are-medium my-5">
-        <button className="button is-outlined is-danger">Cancel</button>
-        <button className="button is-outlined is-danger">Bail</button>
-        <button className="button is-primary">Add to Calendar</button>
+        <button className="button is-outlined is-black">Cancel</button>
+        <button className="button is-black">Bail</button>
+        <button className="button is-link">Add to Calendar</button>
       </div>
     </div>
   );
