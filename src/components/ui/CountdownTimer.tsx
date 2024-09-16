@@ -38,13 +38,15 @@ const CountdownTimer = ({ targetDate, eventTitle, userName }) => {
   }
 
   return (
-    <div className="container is-fullhd">
-      <section className="hero event-banner is-medium is-fullwidth mb-6 has-text-white">
-        <div className="hero-body countdown-div">
-          <div className="container has-text-centered ">
+    <div className="container is-fullhd countdown-div">
+      <section className="hero event-banner is-medium is-fullwidth mb-6">
+        <div className="hero-body">
+          <div className="container has-text-centered">
             <div className="title">
               <div className="section">
-                <h1 className="title is-1">{eventTitle} Starts in:</h1>
+                <h1 className="title is-1 has-text-white">
+                  {eventTitle} Starts in:
+                </h1>
                 <div className="columns is-centered countdown-items">
                   <div className="column countdown-item is-2">
                     <div className="box blur ">
@@ -80,7 +82,9 @@ const CountdownTimer = ({ targetDate, eventTitle, userName }) => {
                   </div>
                 </div>
                 <div className="is-flex is-flex-direction-column is-align-items-center">
-                  <h3 className="title is-4">Hosted By: {userName}</h3>
+                  <h3 className="title is-4 has-text-white">
+                    Hosted By: {userName}
+                  </h3>
                   <figure className="image is-128x128">
                     <img
                       className="is-rounded"
