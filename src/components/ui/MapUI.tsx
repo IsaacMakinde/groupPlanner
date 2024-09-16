@@ -6,11 +6,13 @@ import {
 } from "@vis.gl/react-google-maps";
 import { useEffect, useState } from "react";
 import { useEvent } from "../../contexts/Events/useEvent";
+
 const MapUI = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   const mapId = import.meta.env.VITE_GOOGLE_MAP_ID;
   const { event, loading, error } = useEvent();
   const [position, setPosition] = useState(null);
+  const [placeUrl, setPlaceUrl] = useState(null);
 
   useEffect(() => {
     const fetchPosition = async () => {
@@ -23,7 +25,13 @@ const MapUI = () => {
         // Check if results are found and update position state
         if (data.results && data.results.length > 0) {
           const location = data.results[0].geometry.location;
+          const venueName = event.venue; // Use the event venue name
+
+          // Construct the Google Maps URL using the location name
+          const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueName)}`;
+
           setPosition({ lat: location.lat, lng: location.lng });
+          setPlaceUrl(googleMapsUrl);
         } else {
           console.error("Geocoding failed: No results found");
         }
@@ -58,6 +66,17 @@ const MapUI = () => {
           <p>Loading map...</p>
         )}
       </div>
+
+      {placeUrl && (
+        <a
+          href={placeUrl}
+          className="button is-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open In Google Maps
+        </a>
+      )}
     </APIProvider>
   );
 };

@@ -37,7 +37,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Misha</p>
+                        <p className="title is-4 has-text-grey">Misha</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -67,7 +67,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Angel</p>
+                        <p className="title is-4 has-text-grey">Angel</p>
                         <span className="tag is-medium is-warning ">
                           Pending
                         </span>
@@ -97,7 +97,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Destiny</p>
+                        <p className="title is-4 has-text-grey">Destiny</p>
                         <span className="tag is-medium is-success ">Going</span>
                       </div>
                     </div>
@@ -119,7 +119,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Victor</p>
+                        <p className="title is-4 has-text-grey">Victor</p>
                         <span className="tag is-medium is-success ">Going</span>
                       </div>
                     </div>
@@ -143,7 +143,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Shubham</p>
+                        <p className="title is-4 has-text-grey">Shubham</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -173,7 +173,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Raj</p>
+                        <p className="title is-4 has-text-grey">Raj</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -203,7 +203,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Jane</p>
+                        <p className="title is-4 has-text-grey">Jane</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -233,7 +233,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Skye</p>
+                        <p className="title is-4 has-text-grey">Skye</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -263,7 +263,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Hope</p>
+                        <p className="title is-4 has-text-grey">Hope</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -293,7 +293,7 @@ const GuestList = ({ host }) => {
                     </div>
                     <div className="card-content">
                       <div className="content">
-                        <p className="title is-4 has-text-info">Ciara</p>
+                        <p className="title is-4 has-text-grey">Ciara</p>
                         <span className="tag is-medium is-info ">
                           Interested
                         </span>
@@ -337,10 +337,10 @@ const GuestList = ({ host }) => {
         <footer className="card-footer">
           {isSignedIn && user.fullName == host && (
             <>
-              <a href="#" className="card-footer-item">
+              <a href="#" className="card-footer-item has-text-white">
                 Save
               </a>
-              <a href="#" className="card-footer-item">
+              <a href="#" className="card-footer-item has-text-white">
                 Edit
               </a>
             </>

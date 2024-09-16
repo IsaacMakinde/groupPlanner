@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
         <div>
           <input
             type="checkbox"
-            name="botcheck"
+            name="botCheck"
             className="hidden"
             style={{ display: "none" }}
           />

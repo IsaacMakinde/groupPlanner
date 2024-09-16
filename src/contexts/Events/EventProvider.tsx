@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { EventContext } from "./eventContext";
 import { getEvent } from "../../services/EventService";
 
@@ -20,8 +20,13 @@ export const EventProvider = ({ children }) => {
       });
   }, []);
 
+  const contextValue = useMemo(
+    () => ({ event, fetchEvent, loading, error }),
+    [event, fetchEvent, loading, error]
+  );
+
   return (
-    <EventContext.Provider value={{ event, fetchEvent, loading, error }}>
+    <EventContext.Provider value={contextValue}>
       {children}
     </EventContext.Provider>
   );
