@@ -96,13 +96,15 @@ const EventDetailsPage = () => {
             <span className="tag is-info">
               <i className="fa fa-calendar"></i>
             </span>
-            <span className="tag has-text-white">{formatDate(event.date)}</span>
+            <span className="tag has-text-white has-background-black">
+              {formatDate(event.date)}
+            </span>
           </div>
-          <div className="tags has-addons are-medium">
+          <div className="tags has-addons are-medium ">
             <span className="tag is-success">
               <i className="fa fa-euro-sign"></i>
             </span>
-            <span className="tag has-text-white">
+            <span className="tag has-text-white has-background-black">
               {event.pricing.toFixed(2)}
             </span>
           </div>
@@ -112,7 +114,9 @@ const EventDetailsPage = () => {
             <span className="tag is-info">
               <i className="fa fa-map-marker"></i>
             </span>
-            <span className="tag has-text-white">{event.venue}</span>
+            <span className="tag has-text-white has-background-black">
+              {event.venue}
+            </span>
           </div>
         </div>
         <div className="is-align-self-center"></div>
