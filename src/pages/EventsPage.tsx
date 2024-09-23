@@ -6,7 +6,7 @@ const EventsPage: React.FC = () => {
       <section className="section">
         <div className="hero-section">
           <div className="hero-section-text has-text-white">
-            <h1 className="hero-section-title is-align-self-center  has-text-white is-weight-bold">
+            <h1 className="hero-section-title  is-align-self-center  has-text-white is-weight-bold">
               IGM Events
             </h1>
             <p className="hero-section-subtitle">
