@@ -1,10 +1,17 @@
+import React from "react";
+import Introduction from "../components/ui/Introduction";
+import About from "../components/ui/About";
+import Projects from "../components/ui/Projects";
+import ProjectsDisplay from "../components/ui/ProjectsDisplay";
+
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Home page</h1>
-      <p>where landing, introduction instruction will be displayed</p>
+    <div className="container  homepage">
+      <Introduction />
+      <About />
+      <Projects />
+      <ProjectsDisplay />
     </div>
   );
 };
-
 export default Home;
