@@ -30,6 +30,7 @@ const EventForm = ({ showForm, onClose, onAddEvent }) => {
     const payload = Object.fromEntries(formData);
     const newEvent = {
       title: payload.title.toString(),
+      clerk_id: 1,
       host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),

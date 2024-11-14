@@ -70,8 +70,7 @@ const EventCard: FC<EventCardProps> = ({
           {eventObject.title}
         </p>
         <p className="is-size-6 has-text-black has-text-weight-semibold">
-          <i className="fas fa-euro-sign"></i>
-          {eventObject.pricing.toPrecision(4)}
+          €{eventObject.pricing}
         </p>
         <p className="is-size-6 has-text-grey-dark event-card-description">
           {eventObject.description}

@@ -12,7 +12,6 @@ export const getEvents = async () => {
     return response.data;
   } catch (error) {
     console.log("Error fetching events", error);
-
     throw error;
   }
 };
@@ -41,14 +40,19 @@ export const updateEvent = async (event: Event) => {
   try {
     const toSend = {
       title: event.title,
-      description: event.description,
+      host: event.host,
+      clerk_id: event.clerk_id,
       date: event.date,
       venue: event.venue,
+      place_id: event.place_id,
+      description: event.description,
       category: event.category,
       pricing: event.pricing,
+      guests: event.guests,
     };
 
     const response = await axios.put(`${API}/events/${event.id}`, toSend);
+    console.log("eventAAA", response);
     return response;
   } catch (error) {
     console.log("Error editing event", error);

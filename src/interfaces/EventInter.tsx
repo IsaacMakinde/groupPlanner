@@ -8,6 +8,7 @@
 interface Event {
   id: string;
   title: string;
+  clerk_id: number;
   creator: string;
   host: string;
   date: string;

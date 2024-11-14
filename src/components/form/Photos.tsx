@@ -1,46 +1,65 @@
-import partyPhoto from "../../assets/img/party.jpg";
-import partyPhoto002 from "../../assets/img/party002.jpg";
-import cafe from "../../assets/img/cafe001.jpg";
-import cafe002 from "../../assets/img/cafe002.jpg";
+import React, { useEffect, useState } from "react";
+import { storage } from "../../../firebase";
+import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 const Photos = () => {
+  const [imageUpload, setImageUpload] = useState<File | null>(null);
+  const [imageList, setImageList] = useState<string[]>([]);
+
+  const imageListRef = ref(storage, "images/");
+  const uploadImage = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      console.log("Uploaded a blob or file!", snapshot);
+      alert("Image uploaded successfully");
+    });
+  };
+
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((itemRef) => {
+        getDownloadURL(itemRef).then((url) => {
+          setImageList((prev) => {
+            if (!prev.includes(url)) {
+              return [...prev, url];
+            }
+            return prev;
+          });
+        });
+      });
+    });
+  }, []);
+
   return (
-    <div className="columns is-multiline">
-      <div className="column is-4 ">
-        <div className="card photos-image-card">
-          <div className="card-image">
-            <figure className="image ">
-              <img src={partyPhoto} alt="Placeholder" />
-            </figure>
+    <div>
+      <div className="columns is-multiline">
+        {imageList.map((url) => (
+          <div className="column is-4" key={url}>
+            <div className="card photos-image-card">
+              <div className="">
+                <figure className="image is-2by3">
+                  <img src={url} alt="Placeholder" />
+                </figure>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-      <div className="column is-4 ">
-        <div className="card photos-image-card">
-          <div className="card-image">
-            <figure className="image ">
-              <img src={partyPhoto002} alt="Placeholder" />
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div className="column is-4 ">
-        <div className="card photos-image-card">
-          <div className="card-image">
-            <figure className="image ">
-              <img src={cafe} alt="Placeholder" />
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div className="column is-4 ">
-        <div className="card photos-image-card">
-          <div className="card-image">
-            <figure className="image ">
-              <img src={cafe002} alt="Placeholder" />
-            </figure>
-          </div>
-        </div>
+
+      <div className="flex flex-direction-column">
+        <input
+          type="file"
+          name="file"
+          id="file"
+          className="button"
+          onChange={(event) => setImageUpload(event.target.files[0])}
+        />
+
+        <button className="button" onClick={uploadImage}>
+          Upload Image
+        </button>
       </div>
     </div>
   );

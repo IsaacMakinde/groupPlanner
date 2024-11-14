@@ -105,7 +105,7 @@ const EventDetailsPage = () => {
               <i className="fa fa-euro-sign"></i>
             </span>
             <span className="tag has-text-white has-background-black">
-              {event.pricing.toFixed(2)}
+              {event.pricing}
             </span>
           </div>
         </div>

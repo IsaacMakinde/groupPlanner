@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="App">
+        <div className="App has-background-white">
           <main>
             <Header />
             <Routes>

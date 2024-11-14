@@ -35,11 +35,15 @@ const EventList: React.FC = () => {
         console.log("Error fetching events", error);
       } finally {
         setIsLoading(false);
+        if (isSignedIn && isLoaded) {
+          setUsername(user.fullName);
+          console.log(user);
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [eventsList, isLoaded, isSignedIn, user]);
 
   useEffect(() => {
     if (isSignedIn && isLoaded && user?.fullName !== username) {

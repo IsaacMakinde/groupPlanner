@@ -42,10 +42,11 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
     const newEvent = {
       id: event.id,
       title: payload.title.toString(),
+      clerk_id: 1,
       host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),
-      place_id: placeID,
+      place_id: placeID.toString(),
       description: payload.description.toString(),
       category: payload.category.toString(),
       pricing: parseFloat(payload.pricing.toString()),
@@ -76,6 +77,7 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
         const place = venueAutocomplete.getPlace();
         const place_id = place.place_id;
         setPlaceID(place_id);
+        console.log("what", place_id);
       });
     };
 
