@@ -36,7 +36,7 @@ export const createEvent = async (event: Event) => {
   }
 };
 
-export const updateEvent = async (event: Event) => {
+export const updateEvent = async (event) => {
   try {
     const toSend = {
       title: event.title,
