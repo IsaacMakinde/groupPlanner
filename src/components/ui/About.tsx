@@ -7,19 +7,21 @@ const About: React.FC = () => {
       <div className="columns">
         <div className="column is-half">
           <p className="">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            As a recent honors graduate in Computer Science, I am actively
+            seeking a challenging software engineering position where I can
+            apply my expertise in full-stack development. With proficiency in
+            frameworks such as React Native, React, Next.js, and Angular, along
+            with advanced knowledge of data structures and algorithms, I am
+            equipped to develop optimized and scalable applications for both
+            mobile and desktop environments. Additionally, my IBM Fullstack
+            Developer certification has further honed my technical abilities
+            across the full development stack.
           </p>
           <p>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
+            I am passionate about writing clean, efficient code and look forward
+            to contributing to impactful projects that push the boundaries of
+            technology and allow me the further my skills as I continue
+            learning.
           </p>
 
           <h5 className="has-text-black">Technologies</h5>

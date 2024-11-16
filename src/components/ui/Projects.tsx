@@ -45,7 +45,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/pexels-rsantos1232-3888151.jpg?alt=media&token=61ef59c2-2bc5-4423-9bb9-b8dcc8387148"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/event-details-page.png?alt=media&token=5cd52302-934d-45cf-b353-501adc311991"
                   alt="Octocat"
                 />
               </figure>
@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/seo-scrabble.jpg?alt=media&token=1f558ba5-0a77-470d-ad4f-b225fb2dd4cd"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/update-event-modal.png?alt=media&token=404b18fc-8ef3-463a-9a1a-6b923fda6e36"
                   alt="Octocat"
                 />
               </figure>
@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/purple-table.jpg?alt=media&token=7b77c492-0a44-46fb-8ee7-6cdcbcabd1bb"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/Screenshot%202024-11-16%20182406.png?alt=media&token=97dd8a96-6c58-42bc-9266-b77468857787"
                   alt="Octocat"
                 />
               </figure>
@@ -69,7 +69,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/sign-up-code.jpg?alt=media&token=891e1d19-6291-4fb4-9e3b-a262ac8d000a"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/testing-api.png?alt=media&token=1c1bde33-57e8-4c26-a695-e8d8450f18d6"
                   alt="Octocat"
                 />
               </figure>
@@ -77,7 +77,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/npm-sticker.jpg?alt=media&token=ba049ab3-8b62-4f97-b4e2-d91a89ae08d1"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/review-comp.png?alt=media&token=a6ae9038-23e7-40c6-9e11-df621cc5cfd9"
                   alt="Octocat"
                 />
               </figure>
@@ -85,7 +85,7 @@ const Projects: React.FC = () => {
             <div className="cell">
               <figure className="image is-256x256">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/pexels-markusspiske-6190327.jpg?alt=media&token=deb5f8e0-1037-4f93-8ef6-b8f8a4048233"
+                  src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/database-plan.png?alt=media&token=25e565eb-7789-4d58-808b-a15ed740dabc"
                   alt="Octocat"
                 />
               </figure>

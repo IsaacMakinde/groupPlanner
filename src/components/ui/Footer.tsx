@@ -3,7 +3,7 @@ import Contact from "../form/Contact";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="footer mt-6 section">
+    <footer id="footer" className="footer mt-6 section">
       <div className="content m-4 has-text-centered">
         <div className="columns is-flex is-align-items-center">
           <div className="column is-4 flex">
@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <div className="columns">
               <div className="column">
-                <a href="">
+                <a href="https://www.linkedin.com/in/isaac-makinde-4236781a8/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
@@ -37,7 +37,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="column">
-                <a href="">
+                <a href="https://github.com/IsaacMakinde/groupPlanner">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
@@ -51,7 +51,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="column">
-                <a href="">
+                <a href="https://www.instagram.com/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"

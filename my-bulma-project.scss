@@ -12,6 +12,8 @@ $black: hsl(214, 14%, 10%);
 // Path to Bulma's sass folder
 @use "bulma/sass" with (
   $family-primary: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
+  $family-sans-serif:
+    "Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif",
   $grey-dark: $brown,
   $grey-light: $beige-light,
   $primary: $light-blue,

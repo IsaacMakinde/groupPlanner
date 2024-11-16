@@ -22,12 +22,36 @@
 }
 
 .impact-headline {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
   font-family: "impact";
   font-size: 6.5rem;
   line-height: 1;
   font-weight: 700;
   color: #fa7c91;
   gap: 0rem;
+}
+
+/* Reduce font size for medium screens */
+@media (max-width: 1024px) {
+  .impact-headline {
+    font-size: 5rem;
+  }
+}
+
+/* Reduce font size further for small screens */
+@media (max-width: 768px) {
+  .impact-headline {
+    font-size: 3.5rem;
+  }
+}
+
+/* Reduce font size even more for extra-small screens */
+@media (max-width: 480px) {
+  .impact-headline {
+    font-size: 2.5rem;
+  }
 }
 
 .introduction-sub {
