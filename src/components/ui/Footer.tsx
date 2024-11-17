@@ -3,7 +3,10 @@ import Contact from "../form/Contact";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer id="footer" className="footer mt-6 section has-background-black ">
+    <footer
+      id="footer"
+      className="footer mt-6 section has-background-secondary "
+    >
       <div className="content m-4 has-text-centered">
         <div className="columns is-flex is-align-items-center my-footer">
           <div className="column is-4">
