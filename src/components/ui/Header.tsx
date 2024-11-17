@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo-removebg-preview.png";
 import {
   SignedIn,
   SignedOut,
@@ -13,7 +12,10 @@ const Header = () => {
       <ul className="nav-list">
         <li className="nav-item ">
           <figure className="image is-128x128">
-            <img src={logo} className="is-rounded"></img>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/IMG_0500.jpg?alt=media&token=9b8c260c-ac84-4c34-baf0-1bb5f5f7f533"
+              className="is-rounded"
+            ></img>
           </figure>
         </li>
         <li className="nav-item is-size-5">

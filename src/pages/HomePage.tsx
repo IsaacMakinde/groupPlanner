@@ -6,7 +6,7 @@ import ProjectsDisplay from "../components/ui/ProjectsDisplay";
 
 const Home: React.FC = () => {
   return (
-    <div className="container  homepage">
+    <div className="container homepage is-widescreen">
       <Introduction />
       <About />
       <Projects />
