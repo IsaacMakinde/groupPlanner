@@ -3,10 +3,10 @@ import Contact from "../form/Contact";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer id="footer" className="footer mt-6 section">
+    <footer id="footer" className="footer mt-6 section ">
       <div className="content m-4 has-text-centered">
-        <div className="columns is-flex is-align-items-center">
-          <div className="column is-4 flex">
+        <div className="columns is-flex is-align-items-center my-footer">
+          <div className="column is-4">
             <div className="is-flex is-flex-direction-column is-align-items-center content">
               <figure className="image is-128x128">
                 <img src={logo} className="is-rounded"></img>
