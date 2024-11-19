@@ -14,6 +14,7 @@ const Projects: React.FC = () => {
           Let's get started!
         </p>
       </div>
+
       <div className="columns">
         <div className="content column">
           <h4 className="has-text-black">Tech Stack</h4>
@@ -39,6 +40,9 @@ const Projects: React.FC = () => {
           </ul>
         </div>
       </div>
+      <div className="section my-2 column is-2">
+        <button className="button is-link is-small">Add an event</button>
+      </div>
       <div className="is-justify-content-center is-align-content-center">
         <div className="fixed-grid">
           <div className="grid">
@@ -47,6 +51,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/event-details-page.png?alt=media&token=5cd52302-934d-45cf-b353-501adc311991"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -55,6 +60,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/update-event-modal.png?alt=media&token=404b18fc-8ef3-463a-9a1a-6b923fda6e36"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -63,6 +69,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/Screenshot%202024-11-16%20182406.png?alt=media&token=97dd8a96-6c58-42bc-9266-b77468857787"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -71,6 +78,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/testing-api.png?alt=media&token=1c1bde33-57e8-4c26-a695-e8d8450f18d6"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -79,6 +87,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/review-comp.png?alt=media&token=a6ae9038-23e7-40c6-9e11-df621cc5cfd9"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
@@ -87,6 +96,7 @@ const Projects: React.FC = () => {
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/database-plan.png?alt=media&token=25e565eb-7789-4d58-808b-a15ed740dabc"
                   alt="Octocat"
+                  loading="lazy"
                 />
               </figure>
             </div>
