@@ -200,7 +200,7 @@ const EventDetailsPage = () => {
 
       <div className="container buttons is-flex is-justify-content-center are-medium my-5">
         <button className="button is-outlined is-black">Cancel</button>
-        <button className="button is-black">Bail</button>
+        <button className="button is-black">Unsubscribe</button>
         <button className="button is-link">Add to Calendar</button>
       </div>
     </div>
