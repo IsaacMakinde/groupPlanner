@@ -31,6 +31,7 @@ const EventList: React.FC = () => {
       try {
         const events = await getEvents();
         setEventsList(events);
+        console.log("This happened", events);
       } catch (error) {
         console.log("Error fetching events", error);
       } finally {
@@ -40,7 +41,7 @@ const EventList: React.FC = () => {
 
     fetchData();
     console.log("here");
-  }, [user, isSignedIn]);
+  }, [user, isSignedIn, showEditForm, showDeleteForm]);
 
   useEffect(() => {
     if (isSignedIn && isLoaded && user?.fullName !== username) {
@@ -79,18 +80,22 @@ const EventList: React.FC = () => {
   const setSort = (e) => {
     setSortCriteria(e.target.value);
   };
-  const editEventFormAction = async (eventObject) => {
+  const editEventFormAction = async (eventObject: Event) => {
     try {
-      const response = await updateEvent(eventObject);
-      const updatedEvent = response.data;
-      setEventsList(
-        eventsList.map((event: Event) =>
+      const response = await updateEvent(eventObject); // Call the API to update the event
+      const updatedEvent = response.data; // Extract updated event from the response
+
+      // Update the state with the edited event
+      setEventsList((prevList) =>
+        prevList.map((event) =>
           event.id === updatedEvent.id ? updatedEvent : event
         )
       );
-      handleEditFormClose();
+
+      setShowEditForm(false); // Close the edit form
     } catch (error) {
       console.log("Error editing event", error);
+      console.log("Event object", eventObject);
     }
   };
 
