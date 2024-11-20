@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { storage } from "../../../firebase";
 import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
+import { SignedIn } from "@clerk/clerk-react";
 
 const Photos = () => {
   const [imageUpload, setImageUpload] = useState<File | null>(null);
@@ -47,20 +48,21 @@ const Photos = () => {
           </div>
         ))}
       </div>
+      <SignedIn>
+        <div className="flex flex-direction-column">
+          <input
+            type="file"
+            name="file"
+            id="file"
+            className="button"
+            onChange={(event) => setImageUpload(event.target.files[0])}
+          />
 
-      <div className="flex flex-direction-column">
-        <input
-          type="file"
-          name="file"
-          id="file"
-          className="button"
-          onChange={(event) => setImageUpload(event.target.files[0])}
-        />
-
-        <button className="button" onClick={uploadImage}>
-          Upload Image
-        </button>
-      </div>
+          <button className="button" onClick={uploadImage}>
+            Upload Image
+          </button>
+        </div>
+      </SignedIn>
     </div>
   );
 };

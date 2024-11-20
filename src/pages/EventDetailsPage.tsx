@@ -8,7 +8,7 @@ import Activities from "../components/ui/Activities";
 import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
-import { useUser } from "@clerk/clerk-react";
+import { SignedIn, useUser } from "@clerk/clerk-react";
 import { useEvent } from "../contexts/Events/useEvent";
 
 const EventDetailsPage = () => {
@@ -199,8 +199,10 @@ const EventDetailsPage = () => {
       {activeTab === "reviews" && <Reviews />}
 
       <div className="container buttons is-flex is-justify-content-center are-medium my-5">
-        <button className="button is-outlined is-black">Cancel</button>
-        <button className="button is-black">Unsubscribe</button>
+        <SignedIn>
+          <button className="button is-outlined is-black">Cancel</button>
+          <button className="button is-black">Unsubscribe</button>
+        </SignedIn>
         <button className="button is-link">Add to Calendar</button>
       </div>
     </div>

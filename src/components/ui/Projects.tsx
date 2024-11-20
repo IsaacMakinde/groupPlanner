@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Projects: React.FC = () => {
   return (
     <div className="section has-background-light is-align-self-flex-start content has-text-black">
@@ -7,11 +7,11 @@ const Projects: React.FC = () => {
       <h1 className="title has-text-black">Group Planner 🔗</h1>
       <div className="columns">
         <p className="column is-half">
-          Group Planner is a simple event manager between friends on this
-          platform, on this platform you can create, edit, delete, and view
-          events. The goal of this platform is to make it easier for you and
-          your friends to plan events together and keep each other updated.
-          Let's get started!
+          Group Planner is a straightforward event management platform designed
+          for you and your friends. Here, you can easily create, edit, delete,
+          and view events, all in one place. The goal is to simplify event
+          planning and help everyone stay updated effortlessly. Let’s get
+          started!
         </p>
       </div>
 
@@ -41,7 +41,11 @@ const Projects: React.FC = () => {
         </div>
       </div>
       <div className="section my-2 column is-2">
-        <button className="button is-link is-small">Add an event</button>
+        <a href="">
+          <Link to={"/events"}>
+            <button className="button is-link is-small">Add an event</button>
+          </Link>
+        </a>
       </div>
       <div className="is-justify-content-center is-align-content-center">
         <div className="fixed-grid">
