@@ -40,8 +40,8 @@ const About: React.FC = () => {
         <div className="column is-half is-flex is-justify-content-center is-align-content-center">
           <figure className="image is-256x256">
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/me-ripped.jpg?alt=media&token=d1851abd-9352-469e-9fc6-b649ae44f91b"
-              alt="Octocat"
+              src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/IMG-20221102-WA0017.jpg?alt=media&token=8d874560-f27a-4273-927b-08e7a5615183"
+              alt="A photo of Isaac Makinde"
             />
           </figure>
         </div>

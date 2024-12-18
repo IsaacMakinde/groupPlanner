@@ -24,7 +24,7 @@ const ProjectsDisplay: React.FC = () => {
               <figure className="image is-256x256">
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/my-cloud-ap.png?alt=media&token=f62a2827-53f3-40da-ae38-a7987078a914"
-                  alt="Octocat"
+                  alt="One of my projects"
                   loading="lazy"
                 />
               </figure>
@@ -91,7 +91,7 @@ const ProjectsDisplay: React.FC = () => {
               <figure className="image is-256x256">
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/josephu-5-4.png?alt=media&token=fbf6c120-2d01-4061-9a53-e9516421f126"
-                  alt="Octocat"
+                  alt="One of my projects"
                   loading="lazy"
                 />
               </figure>
@@ -101,7 +101,7 @@ const ProjectsDisplay: React.FC = () => {
               <figure className="image is-256x256">
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/country-app-republic.png?alt=media&token=f3a1c536-6774-4e5f-ad05-4b9599078429"
-                  alt="Octocat"
+                  alt="One of my projects"
                   loading="lazy"
                 />
               </figure>
@@ -172,7 +172,7 @@ const ProjectsDisplay: React.FC = () => {
               <figure className="image is-256x256">
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/store-small-screenshot.png?alt=media&token=18537a27-5cb6-479c-a7ce-8e4c3feb807e"
-                  alt="Octocat"
+                  alt="One of my projects"
                   loading="lazy"
                 />
               </figure>

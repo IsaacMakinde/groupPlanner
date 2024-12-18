@@ -20,16 +20,24 @@ const Introduction: React.FC = () => {
       <h1 className="impact-headline is-align-self-center">
         Fullstack{"\n"}Developer.
       </h1>
+
       <div className="is-flex is-flex-direction-column gap-2 is-align-self-center introduction-sub has-text-grey">
         <p className="subtitle-sub is-align-self-center is-align-content-center has-text-centered">
           A passionate Fullstack web developer and machine learning enthusiast{" "}
           specialized in the manipulation of data and production of intelligent
           systems.
         </p>
-        <a className="is-align-self-center" href="#footer">
-          <button className="button is-normal is-half is-link">
-            Get in touch
-          </button>
+
+        <a
+          className="is-align-self-center"
+          href="https://www.buymeacoffee.com/IsaacMak"
+          target="_blank"
+        >
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png"
+            alt="Buy Me A Coffee"
+            style={{ height: "60px", width: "217px" }}
+          ></img>
         </a>
       </div>
     </div>
