@@ -15,21 +15,21 @@ const Header = () => {
   const { user, isLoaded } = useUser();
   useEffect(() => {
     if (isLoaded && user) {
-      handleUserInDatabase(user);
+      const userData: User = {
+        id: user.id,
+        username: user.fullName,
+        email: user.primaryEmailAddress.toString(),
+        image_url: user.imageUrl,
+        role: "guest",
+      };
+      handleUserInDatabase(userData);
     }
   }, [isLoaded, user]);
 
   const handleUserInDatabase = async (user: User) => {
     try {
-      const dataToSend = {
-        id: user.id,
-        username: user.fullName,
-        email: user.primaryEmailAddress.emailAddress,
-        role: "user",
-        image_url: user.imageUrl,
-      };
-      console.log("Data to send", dataToSend);
-      const createdUser = await createUser(dataToSend);
+      console.log("Data to send", user);
+      const createdUser = await createUser(user);
       if (createdUser) {
         console.log("User created successfully");
       } else {

@@ -1,9 +1,9 @@
 interface User {
   id: string;
-  fullName: string;
-  primaryEmailAddress: string;
+  username: string;
+  email: string;
   role: string;
-  imageUrl: string;
+  image_url: string;
 }
 
 export default User;

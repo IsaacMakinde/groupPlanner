@@ -8,14 +8,14 @@
 interface Event {
   id: string;
   title: string;
-  clerk_id: number;
+  clerk_id: string;
   creator: string;
   host: string;
   date: string;
   venue: string;
   placeId: string;
   description?: string;
-  category?: string;
+  category_id: string;
   pricing: number;
   guests: string;
 }

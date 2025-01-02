@@ -13,7 +13,7 @@ import { useEvent } from "../contexts/Events/useEvent";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { event, fetchEvent, loading, error } = useEvent();
+  const { event, hostUser, fetchEvent, loading, error } = useEvent();
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
   const { user, isSignedIn, isLoaded } = useUser();
@@ -25,8 +25,9 @@ const EventDetailsPage = () => {
   useEffect(() => {
     if (event) {
       setDate(new Date(event.date));
+      console.log("hostUser", hostUser);
     }
-  }, [event]);
+  }, [event, hostUser]);
 
   const addToInterested = () => {
     console.log("Add to interested of this event");
@@ -70,6 +71,7 @@ const EventDetailsPage = () => {
         targetDate={date}
         eventTitle={event.title}
         userName={event.host}
+        hostImage={hostUser?.image_url}
       />
       <div className="container has-text-black is-flex is-flex-direction-column">
         <div className="is-flex is-flex-direction-row is-justify-content-space-between">

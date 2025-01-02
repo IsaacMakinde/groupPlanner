@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CountdownTimer = ({ targetDate, eventTitle, userName }) => {
+const CountdownTimer = ({ targetDate, eventTitle, userName, hostImage }) => {
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 0,
@@ -86,10 +86,7 @@ const CountdownTimer = ({ targetDate, eventTitle, userName }) => {
                     Hosted By: {userName}
                   </h3>
                   <figure className="image is-128x128">
-                    <img
-                      className="is-rounded"
-                      src="https://i.pinimg.com/236x/84/4e/33/844e33f813d6939c4beb64c113f8e8b4.jpg"
-                    />
+                    <img className="is-rounded" src={hostImage} />
                   </figure>
                 </div>
               </div>

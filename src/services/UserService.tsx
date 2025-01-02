@@ -1,10 +1,14 @@
 import axios from "axios";
-const API_BASE_URL = `http://127.0.0.1:5000/api`;
+import { API } from "../utils/constants";
+
+if (!API) {
+  throw new Error("API URL not found");
+}
 
 // Fetch users
 export const getUsers = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/users`);
+    const response = await axios.get(`${API}/users`);
     return response.data;
   } catch (error) {
     console.log("Error fetching users", error);
@@ -12,10 +16,21 @@ export const getUsers = async () => {
   }
 };
 
+// Fetch a user
+export const getUser = async (id) => {
+  try {
+    const response = await axios.get(`${API}/users/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching user", error);
+    throw error;
+  }
+};
+
 // Create a user
 export const createUser = async (user) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/users`, user);
+    const response = await axios.post(`${API}/users`, user);
     return response;
   } catch (error) {
     console.log("Error creating user", error);
@@ -26,7 +41,7 @@ export const createUser = async (user) => {
 // Edit a user
 export const updateUser = async (user) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/users/${user.id}`, user);
+    const response = await axios.put(`${API}/users/${user.id}`, user);
     return response;
   } catch (error) {
     console.log("Error editing user", error);
@@ -37,7 +52,7 @@ export const updateUser = async (user) => {
 // Delete a user
 export const deleteUser = async (id) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/users/${id}`);
+    const response = await axios.delete(`${API}/users/${id}`);
     return response;
   } catch (error) {
     console.log("Error deleting user", error);

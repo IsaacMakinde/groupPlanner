@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API } from "./apiConfig";
+import { API } from "../utils/constants";
 import Event from "../interfaces/EventInter";
 
 if (!API) {
@@ -46,9 +46,8 @@ export const updateEvent = async (event) => {
       venue: event.venue,
       place_id: event.place_id,
       description: event.description,
-      category: event.category,
+      category_id: event.category_id,
       pricing: event.pricing,
-      guests: event.guests,
     };
 
     const response = await axios.put(`${API}/events/${event.id}`, toSend);
@@ -66,6 +65,52 @@ export const deleteEvent = async (id: string) => {
     return response;
   } catch (error) {
     console.log("Error deleting event", error);
+    throw error;
+  }
+};
+
+export const getGuests = async (eventId: string) => {
+  try {
+    const response = await axios.get(`${API}/events/${eventId}/guests`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching guests", error);
+    throw error;
+  }
+};
+
+export const getGuest = async (eventId: string, userId: string) => {
+  try {
+    const response = await axios.get(
+      `${API}/events/${eventId}/guests/${userId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching guest", error);
+    throw error;
+  }
+};
+
+export const addGuest = async (eventId: string, userId: string) => {
+  try {
+    const response = await axios.post(
+      `${API}/events/${eventId}/guests/${userId}`
+    );
+    return response;
+  } catch (error) {
+    console.log("Error adding guest", error);
+    throw error;
+  }
+};
+
+export const removeGuest = async (eventId: string, userId: string) => {
+  try {
+    const response = await axios.delete(
+      `${API}/events/${eventId}/guests/${userId}`
+    );
+    return response;
+  } catch (error) {
+    console.log("Error removing guest", error);
     throw error;
   }
 };
