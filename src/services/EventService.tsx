@@ -1,10 +1,22 @@
 import axios from "axios";
 import { API } from "../utils/constants";
 import Event from "../interfaces/EventInter";
+import { useAuth } from "@clerk/clerk-react";
 
 if (!API) {
   throw new Error("API URL not found");
 }
+
+const axiosAuthInstance = axios.create({
+  baseURL: API,
+});
+
+axiosAuthInstance.interceptors.request.use(async (config) => {
+  const { getToken } = useAuth();
+  const token = await getToken();
+  config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 export const getEvents = async () => {
   try {
@@ -28,7 +40,13 @@ export const getEvent = async (id: string) => {
 
 export const createEvent = async (event: Event) => {
   try {
-    const response = await axios.post(`${API}/events`, event);
+    const { getToken } = useAuth();
+    const token = await getToken();
+    const response = await axios.post(`${API}/events`, event, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response;
   } catch (error) {
     console.log("Error creating event", error);

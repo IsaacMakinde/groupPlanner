@@ -12,10 +12,12 @@ const GuestList = ({ host }) => {
     <div className="container subtitle has-text-primary mt-4 card">
       <div className="card ">
         <header className="card-header">
-          <p className="card-header-title has-text-info">Guest List ({10})</p>
+          <p className="card-header-title has-text-info">
+            Guest List ({guests.length})
+          </p>
           <button className="card-header-icon" aria-label="more options">
             <span className="icon">
-              <i className="fas fa-angle-down" aria-hidden="true"></i>
+              <i className="fas fa-angle-down" aria-hidden="false"></i>
             </span>
           </button>
         </header>

@@ -10,6 +10,7 @@ import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import { useEvent } from "../contexts/Events/useEvent";
+import { addGuest } from "../services/EventService";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +18,7 @@ const EventDetailsPage = () => {
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
   const { user, isSignedIn, isLoaded } = useUser();
+  // const [formLoading, setFormLoading] = useState(false);
 
   useEffect(() => {
     fetchEvent(id);
@@ -29,7 +31,7 @@ const EventDetailsPage = () => {
     }
   }, [event, hostUser]);
 
-  const addToInterested = () => {
+  const addToGuestList = () => {
     console.log("Add to interested of this event");
   };
 
@@ -78,7 +80,7 @@ const EventDetailsPage = () => {
           {isSignedIn && !(user.fullName == event.host) && isLoaded && (
             <div className="is-flex is-flex-direction-row is-justify-content-space-between">
               <button
-                onClick={addToInterested}
+                onClick={addToGuestList}
                 className="button is-rounded is-outlined is-primary is-dark mx-2"
               >
                 Interested
