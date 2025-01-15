@@ -31,7 +31,7 @@ const Photos = () => {
         });
       });
     });
-  }, []);
+  }, [imageListRef]);
 
   return (
     <div>

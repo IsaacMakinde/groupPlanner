@@ -27,6 +27,11 @@ export const getUser = async (id) => {
   }
 };
 
+export const getUserByCid = async (cid: string) => {
+  const response = await axios.get(`${API}/users?cid=${cid}`);
+  return response.data;
+};
+
 // Create a user
 export const createUser = async (user) => {
   try {

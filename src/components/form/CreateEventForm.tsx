@@ -61,7 +61,7 @@ const EventForm = ({ showForm, onClose, onAddEvent, categoryOptions }) => {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [user]);
 
   return (
     <div className={`modal ${showForm ? "is-active is-clipped" : ""}`}>

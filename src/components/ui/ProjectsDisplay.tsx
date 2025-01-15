@@ -1,6 +1,176 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ProjectsDisplay: React.FC = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="section has-background-white is-flex is-flex-direction-column mt-6 is-align-self-flex-start content">
+        <div className="is-flex is-flex-direction-column is-align-self-center content columns">
+          <h1 className="is-align-self-center column has-skeleton">Projects</h1>
+          <p className="column is-align-self-center is-9 is-skeleton">
+            This section showcases a selection of my previous projects,
+            highlighting both the creativity and technical skills applied in
+            each. Each project was crafted with a specific intent, whether it
+            was to solve a real-world problem, explore a unique concept, or
+            demonstrate mastery of a particular tool or technology. My aim is to
+            create work that not only achieves its practical objectives but also
+            resonates on a visual and conceptual level. Through these examples,
+            you can see my dedication to quality, attention to detail, and
+            commitment to pushing the boundaries of design and functionality.
+          </p>
+        </div>
+        <div className="is-justify-content-center is-align-content-center">
+          <div className="fixed-grid">
+            <div className="grid">
+              <div className="cell has-background-white ">
+                <figure className="image is-256x256 is-skeleton">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/my-cloud-ap.png?alt=media&token=f62a2827-53f3-40da-ae38-a7987078a914"
+                    alt="One of my projects"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div className="cell has-background-white is-flex is-flex-direction-column is-align-self-center">
+                <div className="content is-flex is-flex-direction-column is-align-items-center">
+                  <h3 className="is-skeleton">Ticket Master Redux/BulmaCSS</h3>
+                  <p className="is-skeleton">
+                    I was presented with the opportunity to build a full-stack
+                    application using Angular that would handle basic CRUD
+                    operations, with a design aesthetic inspired by
+                    Ticketmaster's UI. Intrigued by the challenge, I decided to
+                    take on the task, seeing it as a perfect chance to apply and
+                    expand my skills in front-end development, particularly with
+                    Angular.
+                  </p>
+                  <p className="skeleton-lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </p>
+
+                  <button className="button is-link is-skeleton">
+                    View Project
+                  </button>
+                </div>
+              </div>
+              <div className="cell has-background-white is-flex is-flex-direction-column is-align-self-center">
+                <div className="content is-flex is-flex-direction-column is-align-items-center">
+                  <h3 className="is-skeleton">Josephu</h3>
+                  <p className="is-skeleton">
+                    I was presented with the opportunity to build a full-stack
+                    application using Angular that would handle basic CRUD
+                    operations, with a design aesthetic inspired by
+                    Ticketmaster's UI. Intrigued by the challenge, I decided to
+                    take on the task, seeing it as a perfect chance to apply and
+                    expand my skills in front-end development, particularly with
+                    Angular.
+                  </p>
+                  <p className="skeleton-lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </p>
+
+                  <button className="button is-link is-skeleton">
+                    View Project
+                  </button>
+                </div>
+              </div>
+              <div className="cell has-background-white">
+                <figure className="image is-256x256 is-skeleton">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/josephu-5-4.png?alt=media&token=fbf6c120-2d01-4061-9a53-e9516421f126"
+                    alt="One of my projects"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+
+              <div className="cell has-background-white">
+                <figure className="image is-256x256 is-skeleton">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/country-app-republic.png?alt=media&token=f3a1c536-6774-4e5f-ad05-4b9599078429"
+                    alt="One of my projects"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div className="cell has-background-white is-flex is-flex-direction-column is-align-self-center">
+                <div className="content is-flex is-flex-direction-column is-align-items-center">
+                  <h3 className="is-skeleton">Country Wiki</h3>
+                  <p className="is-skeleton">
+                    I was presented with the opportunity to build a full-stack
+                    application using Angular that would handle basic CRUD
+                    operations, with a design aesthetic inspired by
+                    Ticketmaster's UI. Intrigued by the challenge, I decided to
+                    take on the task, seeing it as a perfect chance to apply and
+                    expand my skills in front-end development, particularly with
+                    Angular.
+                  </p>
+                  <p className="skeleton-lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </p>
+
+                  <button className="button is-link is-skeleton">
+                    View Project
+                  </button>
+                </div>
+              </div>
+              <div className="cell has-background-white is-flex is-flex-direction-column is-align-self-center">
+                <div className="content is-flex is-flex-direction-column is-align-items-center">
+                  <h3 className="is-skeleton">StoreB {"(Andorid MVVM)"}</h3>
+                  <p className="is-skeleton">
+                    I was presented with the opportunity to build a full-stack
+                    application using Angular that would handle basic CRUD
+                    operations, with a design aesthetic inspired by
+                    Ticketmaster's UI. Intrigued by the challenge, I decided to
+                    take on the task, seeing it as a perfect chance to apply and
+                    expand my skills in front-end development, particularly with
+                    Angular.
+                  </p>
+                  <p className="skeleton-lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </p>
+
+                  <button className="button is-link is-skeleton">
+                    View Project
+                  </button>
+                </div>
+              </div>
+
+              <div className="cell has-background-white">
+                <figure className="image is-256x256 is-skeleton">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/store-small-screenshot.png?alt=media&token=18537a27-5cb6-479c-a7ce-8e4c3feb807e"
+                    alt="One of my projects"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="section has-background-white is-flex is-flex-direction-column mt-6 is-align-self-flex-start content">
       <div className="is-flex is-flex-direction-column is-align-self-center content columns">
