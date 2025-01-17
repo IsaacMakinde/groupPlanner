@@ -10,31 +10,34 @@ import Carpooling from "../components/form/Carpooling";
 import Photos from "../components/form/Photos";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import { useEvent } from "../contexts/Events/useEvent";
+import { useQuery } from "react-query";
+import { getEvent } from "../services/EventService";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { event, fetchEvent, loading, error } = useEvent();
+  const { hostUser, fetchEvent } = useEvent();
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
-  const { user, isSignedIn, isLoaded } = useUser();
+  const { isLoaded } = useUser();
+  // const [formLoading, setFormLoading] = useState(false);
+
+  //useQuery hook to fetch event
+  const {
+    data: eventItem,
+    error: eventFetchingError,
+    isLoading: IsEventLoading,
+  } = useQuery(["events", id], () => getEvent(id), { enabled: !!id });
 
   useEffect(() => {
     fetchEvent(id);
-  }, [id, fetchEvent]);
+  }, [id, fetchEvent, eventItem]);
 
   useEffect(() => {
-    if (event) {
-      setDate(new Date(event.date));
+    if (eventItem) {
+      setDate(new Date(eventItem.date));
+      console.log("hostUser", hostUser);
     }
-  }, [event]);
-
-  const addToInterested = () => {
-    console.log("Add to interested of this event");
-  };
-
-  const declineInvite = () => {
-    console.log("Decline this event");
-  };
+  }, [eventItem, hostUser]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -48,56 +51,34 @@ const EventDetailsPage = () => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  if (loading) {
+  if (IsEventLoading || !isLoaded) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (eventFetchingError) {
+    return <div>Error fetching events</div>;
   }
 
-  if (!event) {
+  if (!eventItem) {
     return <p>Event not found</p>;
-  }
-
-  if (!isLoaded) {
-    return <p>Loading user...</p>;
   }
 
   return (
     <div className="container is-fullhd">
       <CountdownTimer
         targetDate={date}
-        eventTitle={event.title}
-        userName={event.host}
+        eventTitle={eventItem.title}
+        userName={eventItem.host}
+        hostImage={hostUser?.image_url}
       />
       <div className="container has-text-black is-flex is-flex-direction-column">
-        <div className="is-flex is-flex-direction-row is-justify-content-space-between">
-          {isSignedIn && !(user.fullName == event.host) && isLoaded && (
-            <div className="is-flex is-flex-direction-row is-justify-content-space-between">
-              <button
-                onClick={addToInterested}
-                className="button is-rounded is-outlined is-primary is-dark mx-2"
-              >
-                Interested
-              </button>
-              <button
-                onClick={declineInvite}
-                className="button is-rounded is-primary is-dark mx-2"
-              >
-                Decline
-              </button>
-            </div>
-          )}
-        </div>
-
         <div className="is-flex is-flex-direction-row is-justify-content-space-between mt-4 has-text-white">
           <div className="tags has-addons are-medium">
             <span className="tag is-info">
               <i className="fa fa-calendar"></i>
             </span>
             <span className="tag has-text-white has-background-black">
-              {formatDate(event.date)}
+              {formatDate(eventItem.date)}
             </span>
           </div>
           <div className="tags has-addons are-medium ">
@@ -105,7 +86,7 @@ const EventDetailsPage = () => {
               <i className="fa fa-euro-sign"></i>
             </span>
             <span className="tag has-text-white has-background-black">
-              {event.pricing}
+              {eventItem.pricing}
             </span>
           </div>
         </div>
@@ -115,13 +96,13 @@ const EventDetailsPage = () => {
               <i className="fa fa-map-marker"></i>
             </span>
             <span className="tag has-text-white has-background-black">
-              {event.venue}
+              {eventItem.venue}
             </span>
           </div>
         </div>
         <div className="is-align-self-center"></div>
 
-        <GuestList host={event.host} />
+        <GuestList host={eventItem.host} />
       </div>
       <div className="tabs is-centered is-medium mt-6 mb-6 is-dark is-boxed ">
         <ul>
@@ -201,7 +182,7 @@ const EventDetailsPage = () => {
       <div className="container buttons is-flex is-justify-content-center are-medium my-5">
         <SignedIn>
           <button className="button is-outlined is-black">Cancel</button>
-          <button className="button is-black">Unsubscribe</button>
+          <button className="button is-black">Subscribe</button>
         </SignedIn>
         <button className="button is-link">Add to Calendar</button>
       </div>

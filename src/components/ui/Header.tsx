@@ -6,7 +6,39 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
+import { useUser } from "@clerk/clerk-react";
+import { useEffect } from "react";
+import { createUser } from "../../services/UserService";
+import User from "../../interfaces/clerkUser";
+
 const Header = () => {
+  const { user, isLoaded } = useUser();
+  useEffect(() => {
+    if (isLoaded && user) {
+      const userData: User = {
+        id: user.id,
+        username: user.fullName,
+        email: user.primaryEmailAddress.toString(),
+        image_url: user.imageUrl,
+        role: "guest",
+      };
+      handleUserInDatabase(userData);
+    }
+  }, [isLoaded, user]);
+
+  const handleUserInDatabase = async (user: User) => {
+    try {
+      console.log("Data to send", user);
+      const createdUser = await createUser(user);
+      if (createdUser) {
+        console.log("User created successfully");
+      } else {
+        console.error("Error checking/creating user");
+      }
+    } catch (error) {
+      console.log("Error creating user", error);
+    }
+  };
   return (
     <nav aria-label="primary menu">
       <ul className="nav-list">

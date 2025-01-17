@@ -8,6 +8,7 @@ interface EventCardProps {
   onDeleteEvent: (eventId: string) => void;
   onEditEvent: (eventId: string) => void;
   userName: string;
+  category: string;
 }
 
 const formatDate = (dateString: string) => {
@@ -25,6 +26,7 @@ const EventCard: FC<EventCardProps> = ({
   onDeleteEvent,
   onEditEvent,
   userName,
+  category,
 }) => {
   const canEdit: boolean = userName === eventObject.host;
   const canDelete: boolean = userName === eventObject.host;
@@ -53,7 +55,6 @@ const EventCard: FC<EventCardProps> = ({
               </button>
             )}
           </div>
-
           <div className="event-info">
             <p className="is-size-3 has-text-white has-text-weight-medium">
               {eventObject.venue}
@@ -69,6 +70,7 @@ const EventCard: FC<EventCardProps> = ({
         <p className="event-card-title has-text-black has-text-weight-semibold ">
           {eventObject.title}
         </p>
+
         <p className="is-size-6 has-text-black has-text-weight-semibold">
           €{eventObject.pricing}
         </p>
@@ -79,7 +81,7 @@ const EventCard: FC<EventCardProps> = ({
         <div className="event-card-footer is-flex is-justify-content-space-between is-align-items-center columns is-full">
           <p className="is-size-6 has-text-grey column">
             <span className="tag is-medium is-info is-hovered has-text-white">
-              {eventObject.category}
+              {category}
             </span>
           </p>
 

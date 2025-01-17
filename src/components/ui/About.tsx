@@ -1,6 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About: React.FC = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="section has-background-white is-align-self-flex-start content mt-6">
+        <h1 className="has-skeleton">About</h1>
+        <div className="columns">
+          <div className="column is-half">
+            <p className="skeleton-lines">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </p>
+            <p className="skeleton-lines">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </p>
+
+            <h5 className="has-skeleton">Technologies</h5>
+            <div className="fixed-grid">
+              <div className="grid skeleton-lines">
+                <div className="cell">👍 JavaScript</div>
+                <div className="cell">👍 CSS</div>
+                <div className="cell">👍 HTML</div>
+                <div className="cell">👍 NextJS</div>
+                <div className="cell">👍 ReactTS</div>
+                <div className="cell">👍 TypeScript</div>
+                <div className="cell">👍 BulmaCSS</div>
+              </div>
+            </div>
+          </div>
+          <div className="column is-half is-flex is-justify-content-center is-align-content-center ">
+            <figure className="image is-128x128 is-skeleton">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/me-at-pink-beach.jpg?alt=media&token=400dbd8a-c41c-4f44-9d63-eefae798a773"
+                alt="A photo of Isaac Makinde"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="section has-background-white is-align-self-flex-start content mt-6 has-text-black">
       <h1 className="has-text-black">About</h1>
@@ -40,8 +96,8 @@ const About: React.FC = () => {
         <div className="column is-half is-flex is-justify-content-center is-align-content-center">
           <figure className="image is-256x256">
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/me-ripped.jpg?alt=media&token=d1851abd-9352-469e-9fc6-b649ae44f91b"
-              alt="Octocat"
+              src="https://firebasestorage.googleapis.com/v0/b/planner-426320.appspot.com/o/me-at-pink-beach.jpg?alt=media&token=400dbd8a-c41c-4f44-9d63-eefae798a773"
+              alt="A photo of Isaac Makinde"
             />
           </figure>
         </div>

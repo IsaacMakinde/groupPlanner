@@ -1,6 +1,7 @@
 const Reviews = () => {
   return (
     <>
+      <h1 className="title is-3 has-text-black">Reviews {"(coming soon) "}</h1>
       <article className="media has-text-black mt-4 mb-8 mx-3 c">
         <figure className="media-left">
           <p className="image is-64x64">

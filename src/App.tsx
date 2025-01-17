@@ -6,7 +6,6 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import "./App.css";
 import LoginForm from "./components/form/LoginForm";
 import Footer from "./components/ui/Footer";
-import { EventProvider } from "./contexts/Events/EventProvider";
 
 function App() {
   return (
@@ -20,14 +19,7 @@ function App() {
               <Route path="/login" element={<LoginForm />} />
               <Route path="/events" element={<EventsPage />} />
 
-              <Route
-                path="/events/:id"
-                element={
-                  <EventProvider>
-                    <EventDetailsPage />
-                  </EventProvider>
-                }
-              />
+              <Route path="/events/:id" element={<EventDetailsPage />} />
             </Routes>
           </main>
           <Footer />

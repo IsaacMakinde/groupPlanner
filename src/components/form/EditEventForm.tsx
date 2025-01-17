@@ -1,56 +1,41 @@
-import Event from "../../interfaces/EventInter";
 import { useClerk } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 
-interface EditEventFormProps {
-  event: Event;
-  showForm: boolean;
-  onClose: () => void;
-  onEditEvent: (event) => void;
-}
+// interface EditEventFormProps {
+//   event: Event;
+//   showForm: boolean;
+//   onClose: () => void;
+//   onEditEvent: (event) => void;
+//   categoryOptions: unknown[];
+// }
 
-const EditEventForm: React.FC<EditEventFormProps> = ({
+const EditEventForm = ({
   showForm,
   event,
   onClose,
   onEditEvent,
+  categoryOptions,
 }) => {
   const defaultDate = new Date().toISOString().split("T")[0];
   const maxLength = 2000;
   const { user } = useClerk();
   const [placeID, setPlaceID] = useState("");
-  const [guestListError, setGuestListError] = useState("");
-  const guestListRegex =
-    /^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*(?:,\s*[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*)*$/;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const guestList = formData.get("guestList").toString().trim();
-
-    if (!guestListRegex.test(guestList)) {
-      setGuestListError(
-        "Please enter guests' names separated by commas (e.g. John Doe, Jane Doe)."
-      );
-      console.log("Invalid guest list");
-      return; // Exit early if guest list is invalid
-    } else {
-      setGuestListError(""); // Clear error message
-    }
-
     const payload = Object.fromEntries(formData);
     const newEvent = {
       id: event.id,
       title: payload.title.toString(),
-      clerk_id: 1,
+      clerk_id: user.id,
       host: user.fullName,
       date: payload.date.toString(),
       venue: payload.venue.toString(),
       place_id: placeID.toString(),
       description: payload.description.toString(),
-      category: payload.category.toString(),
+      category_id: payload.category.valueOf(),
       pricing: parseFloat(payload.pricing.toString()),
-      guests: payload.guestList.toString(),
     };
     onEditEvent(newEvent);
   };
@@ -77,7 +62,6 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
         const place = venueAutocomplete.getPlace();
         const place_id = place.place_id;
         setPlaceID(place_id);
-        console.log("what", place_id);
       });
     };
 
@@ -113,34 +97,16 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
                 </span>
               </div>
             </div>
-            <div className="field">
-              <div className="control has-icons-left">
-                <input
-                  className={`input ${guestListError ? "is-danger" : ""}`}
-                  name="guestList"
-                  type="text"
-                  placeholder="Guests"
-                  defaultValue={event?.guests}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-users"></i>
-                </span>
-                {guestListError && (
-                  <p className="help is-danger">{guestListError}</p>
-                )}
-              </div>
-            </div>
 
             <div className="field">
               <div className="control has-icons-left">
                 <input
                   className="input"
                   name="date"
-                  type="date"
+                  type="datetime-local"
                   min={defaultDate}
-                  placeholder="dd/mm/yyyy"
+                  placeholder="dd/mm/yyyy hh:mm"
                   required
-                  defaultValue={event?.date}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-calendar"></i>
@@ -186,11 +152,13 @@ const EditEventForm: React.FC<EditEventFormProps> = ({
             <div className="field">
               <label className="label">Category</label>
               <div className="control has-icons-left">
-                <div className="select" defaultValue={event?.category}>
+                <div className="select">
                   <select name="category">
-                    <option value="Celebration">Celebration</option>
-                    <option value="Travel">Travel Plan</option>
-                    <option value="Get Together">Get Together</option>
+                    {categoryOptions.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
