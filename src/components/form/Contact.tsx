@@ -1,30 +1,53 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Contact: React.FC = () => {
   const [result, setResult] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const ACCESSKEY = import.meta.env.VITE_FORM_ACCESS_KEY;
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setResult("Form Submitted Successfully");
+    setIsSubmitting(true);
     const formData = new FormData(event.currentTarget);
 
     formData.append("access_key", ACCESSKEY);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await axios.post(
+        "https://api.web3forms.com/submit",
+        JSON.stringify(Object.fromEntries(formData)),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
-
-      if (data) {
-        event.currentTarget.reset();
+      if (response.data.success) {
+        Swal.fire("Success!", "Form Submitted Successfully!", "success");
+        setResult("Form Submitted Successfully");
+      } else {
+        Swal.fire(
+          "Error!",
+          response.data.message || "Form Submission Failed!",
+          "error"
+        );
+        setResult(response.data.message || "Form Submission Failed");
       }
     } catch (error) {
-      event.currentTarget.reset();
-      setResult("Form Submitted Successfully");
+      console.error("Unexpected Error:", error);
+      Swal.fire(
+        "Error!",
+        error.response?.data?.message || "An unexpected error occurred!",
+        "error"
+      );
+      setResult(
+        error.response?.data?.message || "An unexpected error occurred"
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -36,13 +59,11 @@ const Contact: React.FC = () => {
           name="subject"
           value="New Submission from Web3Forms"
         />
-
         <input
           type="hidden"
           name="redirect"
           value="https://web3forms.com/success"
         />
-
         <div className="field">
           <div className="control">
             <input
@@ -66,12 +87,15 @@ const Contact: React.FC = () => {
         </div>
         <div className="field">
           <div className="control">
-            <button type="submit" className="button is-primary">
-              Submit Message
+            <button
+              type="submit"
+              className="button is-primary"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Submitting..." : "Submit Message"}
             </button>
           </div>
         </div>
-
         <div>
           <input
             type="checkbox"

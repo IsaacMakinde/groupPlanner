@@ -1,7 +1,9 @@
+import Swal from "sweetalert2";
 import Event from "../../interfaces/EventInter";
 import EventForm from "../form/CreateEventForm";
 import DeleteEventForm from "../form/DeleteEventForm";
 import EditEventForm from "../form/EditEventForm";
+
 import {
   createEvent,
   deleteEvent,
@@ -14,6 +16,7 @@ import { useUser } from "@clerk/clerk-react";
 import { useQuery } from "react-query";
 import { useMutation } from "react-query";
 import { getCategories } from "../../services/CategoryService";
+import { useQueryClient } from "react-query";
 
 const EventList: React.FC = () => {
   // form visibility state
@@ -25,7 +28,7 @@ const EventList: React.FC = () => {
   const [formLoading, setFormLoading] = useState(false);
   // User and events state
   const { isSignedIn, user, isLoaded } = useUser();
-
+  const queryClient = useQueryClient();
   // Sorting and filtering state
   const [sortCriteria, setSortCriteria] = useState("Date"); // New sort
   const [filterCriteria, setFilterCriteria] = useState(""); // New filter
@@ -49,6 +52,7 @@ const EventList: React.FC = () => {
     error: categoryFetchingError,
     isLoading: isCategoriesLoading,
   } = useQuery("categories", getCategories);
+
   const filteredEvents = useMemo(() => {
     if (!filterCriteria) return eventItems;
     return eventItems.filter((event) =>
@@ -60,12 +64,23 @@ const EventList: React.FC = () => {
     onSuccess: (data) => {
       console.log("Event created", data);
       const message = "Event created successfully";
-      alert(message);
+      queryClient.invalidateQueries("events");
+      Swal.fire({
+        title: "Event created",
+        text: message,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     },
     onError: (error) => {
       console.log("Error creating event", error);
       const message = "Error creating event";
-      alert(message);
+      Swal.fire({
+        title: "Error",
+        text: message,
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     },
     onSettled: () => {
       console.log("Event creation request settled");
@@ -76,12 +91,23 @@ const EventList: React.FC = () => {
     onSuccess: (data) => {
       console.log("Event updated", data);
       const message = "Event updated successfully";
-      alert(message);
+      queryClient.invalidateQueries("events");
+      Swal.fire({
+        title: "Event updated",
+        text: message,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     },
     onError: (error) => {
       console.log("Error updating event", error);
       const message = "Error updating event";
-      alert(message);
+      Swal.fire({
+        title: "Error",
+        text: message,
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     },
     onSettled: () => {
       console.log("Event update request settled");
@@ -92,12 +118,23 @@ const EventList: React.FC = () => {
     onSuccess: (data) => {
       console.log("Event deleted", data);
       const message = "Event deleted successfully";
-      alert(message);
+      queryClient.invalidateQueries("events");
+      Swal.fire({
+        title: "Event deleted",
+        text: message,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     },
     onError: (error) => {
       console.log("Error deleting event", error);
       const message = "Error deleting event";
-      alert(message);
+      Swal.fire({
+        title: "Error",
+        text: message,
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     },
     onSettled: () => {
       console.log("Event deletion request settled");
@@ -154,7 +191,6 @@ const EventList: React.FC = () => {
     try {
       await onSubmitEvent(event);
       setShowCreateForm(false);
-      // await fetchEvents();
     } catch (error) {
       console.log("Error adding event", error);
     } finally {
