@@ -7,18 +7,22 @@ import Reviews from "../components/form/Reviews";
 import Activities from "../components/ui/Activities";
 import Details from "../components/ui/Details";
 import Carpooling from "../components/form/Carpooling";
+import GuestData from "../interfaces/guestData";
 import Photos from "../components/form/Photos";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import { useEvent } from "../contexts/Events/useEvent";
 import { useQuery } from "react-query";
 import { getEvent } from "../services/EventService";
+import { useMutation } from "react-query";
+import { addGuest } from "../services/EventService";
+import Swal from "sweetalert2";
 
 const EventDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const { hostUser, fetchEvent } = useEvent();
   const [date, setDate] = useState(new Date());
   const [activeTab, setActiveTab] = useState("reviews");
-  const { isLoaded } = useUser();
+  const { isLoaded, user } = useUser();
   // const [formLoading, setFormLoading] = useState(false);
 
   //useQuery hook to fetch event
@@ -27,6 +31,43 @@ const EventDetailsPage = () => {
     error: eventFetchingError,
     isLoading: IsEventLoading,
   } = useQuery(["events", id], () => getEvent(id), { enabled: !!id });
+
+  const { mutate: joinEvent } = useMutation(
+    ({ eventId, data }: { eventId: string; data: GuestData }) =>
+      addGuest(eventId, data), // Destructure the object to pass the correct parameters
+    {
+      onSuccess: (data) => {
+        console.log("Guest added to event", data);
+        Swal.fire({
+          title: "Success!",
+          text: "Guest successfully added to event!",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      },
+      onError: (error) => {
+        console.error("Error adding guest to event", error);
+        alert("There was an error adding the guest to the event.");
+      },
+      onSettled: () => {
+        console.log("Guest addition process settled.");
+      },
+    }
+  );
+
+  const handleAddGuest = () => {
+    const guestData: GuestData = {
+      clerk_id: user.id,
+      guest_status: "subscribed",
+      guest_email: user.emailAddresses[0].emailAddress,
+      guest_name: user.firstName,
+      guest_image_url: user.imageUrl,
+      event_id: id,
+    };
+    console.log("Submitting guest data", guestData);
+
+    joinEvent({ eventId: id, data: guestData });
+  };
 
   useEffect(() => {
     fetchEvent(id);
@@ -182,7 +223,9 @@ const EventDetailsPage = () => {
       <div className="container buttons is-flex is-justify-content-center are-medium my-5">
         <SignedIn>
           <button className="button is-outlined is-black">Cancel</button>
-          <button className="button is-black">Subscribe</button>
+          <button className="button is-black" onClick={handleAddGuest}>
+            Subscribe
+          </button>
         </SignedIn>
         <button className="button is-link">Add to Calendar</button>
       </div>

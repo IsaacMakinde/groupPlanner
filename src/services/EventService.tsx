@@ -1,6 +1,7 @@
 import axios from "axios";
 import { API } from "../utils/constants";
 import Event from "../interfaces/EventInter";
+import GuestData from "../interfaces/guestData";
 
 if (!API) {
   throw new Error("API URL not found");
@@ -55,37 +56,20 @@ export const deleteEvent = async (id: string) => {
 };
 
 export const getGuests = async (eventId: string) => {
-  try {
-    const response = await axios.get(`${API}/events/${eventId}/guests`);
-    return response.data;
-  } catch (error) {
-    console.log("Error fetching guests", error);
-    throw error;
-  }
+  const response = await axios.get(`${API}/events/${eventId}/guests`);
+  return response.data;
 };
 
-export const getGuest = async (eventId: string, userId: string) => {
-  try {
-    const response = await axios.get(
-      `${API}/events/${eventId}/guests/${userId}`
-    );
-    return response.data;
-  } catch (error) {
-    console.log("Error fetching guest", error);
-    throw error;
-  }
+export const getGuest = async (eventId: string, guestId: number) => {
+  const response = await axios.get(
+    `${API}/events/${eventId}/guests/${guestId}`
+  );
+  return response.data;
 };
 
-export const addGuest = async (eventId: string, userId: string) => {
-  try {
-    const response = await axios.post(
-      `${API}/events/${eventId}/guests/${userId}`
-    );
-    return response;
-  } catch (error) {
-    console.log("Error adding guest", error);
-    throw error;
-  }
+export const addGuest = async (eventId: string, data: GuestData) => {
+  const response = await axios.post(`${API}/events/${eventId}/guests`, data);
+  return response.data;
 };
 
 export const removeGuest = async (eventId: string, userId: string) => {
