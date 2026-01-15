@@ -16,10 +16,13 @@ const EditEventForm = ({
   onEditEvent,
   categoryOptions,
 }) => {
-  const defaultDate = new Date().toISOString().split("T")[0];
+  const defaultDate = new Date().toISOString().slice(0, 16);
   const maxLength = 2000;
   const { user } = useClerk();
   const [placeID, setPlaceID] = useState("");
+  const eventDate = event?.date
+    ? new Date(event.date).toISOString().slice(0, 16)
+    : defaultDate;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -106,6 +109,7 @@ const EditEventForm = ({
                   type="datetime-local"
                   min={defaultDate}
                   placeholder="dd/mm/yyyy hh:mm"
+                  defaultValue={eventDate || defaultDate}
                   required
                 />
                 <span className="icon is-small is-left">

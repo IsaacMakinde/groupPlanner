@@ -4,8 +4,51 @@ const GuestList = ({ host }) => {
   const { user, isLoaded, isSignedIn } = useUser();
   const { guests, loading } = useEvent();
 
-  if (!isLoaded && loading) {
-    return <p>Loading...</p>;
+  if (!isLoaded || loading) {
+    return (
+      <div className="container subtitle has-text-primary mt-4 card">
+        <div className="card">
+          <header className="card-header">
+            <p className="card-header-title is-skeleton">Guest List (0)</p>
+            <button className="card-header-icon" aria-label="more options">
+              <span className="icon">
+                <i className="fas fa-angle-down" aria-hidden="false"></i>
+              </span>
+            </button>
+          </header>
+
+          <div className="card-content guest-list-card ">
+            <div className="content">
+              <div className="fixed-grid has-4-cols has-2-cols-mobile">
+                <div className="grid guest-list">
+                  <div className="cell">
+                    <div className="card is-skeleton">
+                      <div></div>
+                      <div className="card-image">
+                        <button className="is-rounded is-large is-outlined mx-2 is-skeleton">
+                          Add
+                        </button>
+                      </div>
+                      <div className="card-content ">
+                        <div className="content is-skeleton">
+                          <p className="title is-4 is-skeleton">
+                            Invite Friend
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="card-footer"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer className="card-footer"></footer>
+        </div>
+      </div>
+    );
   }
 
   return (
