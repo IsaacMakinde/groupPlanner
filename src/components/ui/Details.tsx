@@ -5,7 +5,27 @@ const Details = () => {
   const { event, loading, error } = useEvent();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="container is-fluid">
+        <h1 className="title is-3 has-skeleton">Details</h1>
+        <div className="content">
+          <p className="subtitle is-5 skeleton-lines">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </p>
+        </div>
+
+        <div className="content">
+          <div className="is-flex is-flex-direction-column is-align-items-center is-gap-4 is-justify-content-space-between my-6">
+            <h2 className="title is-4 skeleton-lines">
+              <div></div>
+            </h2>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {

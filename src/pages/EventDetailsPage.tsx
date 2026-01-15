@@ -93,7 +93,145 @@ const EventDetailsPage = () => {
   };
 
   if (IsEventLoading || !isLoaded) {
-    return <p>Loading...</p>;
+    return (
+      <div className="container is-fullhd">
+        {/* Countdown Timer */}
+        <div className="box has-background-light p-4 is-skeleton">
+          <CountdownTimer
+            targetDate={date}
+            eventTitle={eventItem?.title || "Event Title"}
+            userName={eventItem?.host || "Host Name"}
+            hostImage={hostUser?.image_url || "default-image-url"}
+          />
+        </div>
+
+        {/* Event Details */}
+        <div className="container has-text-black mt-5">
+          <div className="tags-wrapper is-flex is-flex-direction-row is-justify-content-space-between">
+            {/* Event Date */}
+            <div className="tags has-addons are-medium">
+              <span className="tag is-info">
+                <i className="fa fa-calendar"></i>
+              </span>
+              <span className="tag is-skeleton">
+                {formatDate(eventItem?.date) || "Event Date"}
+              </span>
+            </div>
+            {/* Pricing */}
+            <div className="tags has-addons are-medium">
+              <span className="tag is-success">
+                <i className="fa fa-euro-sign"></i>
+              </span>
+              <span className="tag is-skeleton">
+                {eventItem?.pricing || "Pricing Info"}
+              </span>
+            </div>
+          </div>
+
+          <div className="tags-wrapper mt-3 is-flex is-flex-direction-row is-justify-content-space-between">
+            {/* Venue */}
+            <div className="tags has-addons are-medium">
+              <span className="tag is-info">
+                <i className="fa fa-map-marker"></i>
+              </span>
+              <span className="tag is-skeleton">
+                {eventItem?.venue || "Event Venue"}
+              </span>
+            </div>
+          </div>
+
+          {/* Guest List */}
+          <div className="mt-4">
+            <GuestList host={eventItem?.host || "Host Name"} />
+          </div>
+        </div>
+
+        {/* Tabs Navigation */}
+        <div className="tabs is-centered is-medium mt-6 mb-6 is-dark is-boxed">
+          <ul>
+            <li
+              onClick={() => setActiveTab("reviews")}
+              className={activeTab === "reviews" ? "is-active" : ""}
+            >
+              <a>
+                <span className="icon is-small">
+                  <i className="fa fa-comment" aria-hidden="true"></i>
+                </span>
+                <span>Reviews</span>
+              </a>
+            </li>
+            <li
+              onClick={() => setActiveTab("details")}
+              className={activeTab === "details" ? "is-active" : ""}
+            >
+              <a>
+                <span className="icon is-small">
+                  <i className="fa fa-info" aria-hidden="true"></i>
+                </span>
+                <span>Details</span>
+              </a>
+            </li>
+            <li
+              onClick={() => setActiveTab("activities")}
+              className={activeTab === "activities" ? "is-active" : ""}
+            >
+              <a>
+                <span className="icon is-small">
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                </span>
+                <span>Activities</span>
+              </a>
+            </li>
+            <li
+              onClick={() => setActiveTab("carpooling")}
+              className={activeTab === "carpooling" ? "is-active" : ""}
+            >
+              <a>
+                <span className="icon is-small">
+                  <i className="fa fa-car" aria-hidden="true"></i>
+                </span>
+                <span>Carpooling</span>
+              </a>
+            </li>
+            <li
+              onClick={() => setActiveTab("photos")}
+              className={activeTab === "photos" ? "is-active" : ""}
+            >
+              <a>
+                <span className="icon is-small">
+                  <i className="fas fa-image" aria-hidden="true"></i>
+                </span>
+                <span>Photos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Tab Content */}
+        <div className="content">
+          {activeTab === "photos" && <Photos />}
+          {activeTab === "carpooling" && <Carpooling />}
+          {activeTab === "activities" && <Activities />}
+          {activeTab === "details" && <Details />}
+          {activeTab === "reviews" && <Reviews />}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="container buttons is-flex is-justify-content-center are-medium my-5">
+          <SignedIn>
+            <button className="button is-skeleton" disabled>
+              Cancel
+            </button>
+            <button className="button is-skeleton" disabled>
+              Subscribe
+            </button>
+          </SignedIn>
+          <button className="button is-link is-skeleton">
+            Add to Calendar
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (eventFetchingError) {

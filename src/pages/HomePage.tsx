@@ -3,6 +3,7 @@ import Introduction from "../components/ui/Introduction";
 import About from "../components/ui/About";
 import Projects from "../components/ui/Projects";
 import ProjectsDisplay from "../components/ui/ProjectsDisplay";
+// have to refactor this application
 
 const Home: React.FC = () => {
   return (
